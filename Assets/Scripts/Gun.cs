@@ -15,41 +15,30 @@ public class Gun : MonoBehaviour
     //public float currentOverheatGaze; // 장전 시스템이 좀 더 간단한데 굳이 과열 시스템으로 해야하나 싶어서 일단 주석처리하고 장전으로 구현.
 
     public float reloadDelay;
-    public float currentReloadDelay;
+    //public float currentReloadDelay; // 코루틴 사용으로 주석 처리
     public float maxBulletAmount;
     public float currentBulletAmount;
 
     public float maxDurability;
     public float currentDurability;
-    public float atkDistance;
+
+    public FieldOfView atkFOV;
     public GameObject bulletPrefab;
+    public Transform atkPOS;
 
     // Start is called before the first frame update
     void Start()
     {
         currentDurability = maxDurability;
-        currentReloadDelay = reloadDelay;
         currentBulletAmount = maxBulletAmount;
+        
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentBulletAmount <= 0) // 장전중
-        {
-            //Debug.Log("장전시작");
-            state = "Reload";
-            currentReloadDelay += Time.deltaTime;
-
-            
-            if (reloadDelay <= currentReloadDelay) // 장전 시간 끝
-            {
-                //Debug.Log("장전완료");
-                currentReloadDelay = 0;
-                currentBulletAmount = maxBulletAmount;
-                state = "Active";
-            }
-        }
+        
     }
 
 }

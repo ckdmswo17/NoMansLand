@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-   public static JoyStick Instance
-   {
+    public static JoyStick Instance
+    {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = FindObjectOfType<JoyStick>();
-                if(instance == null)
+                if (instance == null)
                 {
                     var instanceContainer = new GameObject("JoyStick");
                     instance = instanceContainer.AddComponent<JoyStick>();
@@ -20,7 +20,7 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
             }
             return instance;
         }
-   }
+    }
     private static JoyStick instance;
 
     public GameObject smallStick;
@@ -30,9 +30,9 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
     float stickDiameter;
 
     [SerializeField] private GameObject go_Player;
-    [SerializeField] private float moveSpeed;
 
     private bool isTouch = false;
+    public bool atkAble = true; // 조이스틱 움직임에 따라 공격을 허용 / 불허 해주는 플래그
     private Vector3 movePosition;
 
     private Player player_sc;
@@ -46,15 +46,24 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
 
     void Update()
     {
+        
         if (isTouch)
         {
             go_Player.transform.position += movePosition;
+
+            Vector3 direction = new Vector3(joyVec.x, 0, joyVec.y).normalized;
+            Quaternion rotation = Quaternion.LookRotation(direction); // 해당 방향을 바라보는 회전값을 구합니다.
+            go_Player.transform.rotation = Quaternion.Slerp(go_Player.transform.rotation, rotation, Time.deltaTime * player_sc.moveRotationSpeed); // 부드럽게 회전하도록 Slerp 함수를 사용합니다.
         }
+
+        
     }
 
     public void PointDown()
     {
+        //Debug.Log("ui 누름 ");      
         isTouch = true;
+        atkAble = false;
         bGStick.SetActive(true);
         bGStick.transform.position = Input.mousePosition;
         smallStick.transform.position = Input.mousePosition;
@@ -80,15 +89,32 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
             smallStick.transform.position = stickFirstPosition + joyVec * stickDiameter;
         }
         float innerDistance = Vector2.Distance(bGStick.transform.position, smallStick.transform.position) / (stickDiameter * 0.5f); 
-        movePosition = new Vector3(joyVec.x * moveSpeed * innerDistance * Time.deltaTime, 0f, joyVec.y * moveSpeed * innerDistance * Time.deltaTime);
+        movePosition = new Vector3(joyVec.x * player_sc.speed * innerDistance * Time.deltaTime, 0f, joyVec.y * player_sc.speed * innerDistance * Time.deltaTime);
     }
 
-    public void Drop()
+    public void Drop() // 드래그 후 땠을때 
     {
+        
         isTouch = false;
+        atkAble = true;
         joyVec = Vector3.zero;
         movePosition = Vector3.zero;
-        player_sc.Attack();
+        
+        
+        
+        bGStick.SetActive(false);
+    }
+
+    public void PointUp() // 드래그 하고 땠을때 + 안하고 땠을때
+    {
+        
+        isTouch = false;
+        atkAble = true;
+        joyVec = Vector3.zero;
+        movePosition = Vector3.zero;
+        
+
+
         bGStick.SetActive(false);
     }
 
