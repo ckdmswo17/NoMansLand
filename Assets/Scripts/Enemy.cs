@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.AI;
+
 public class Enemy : MonoBehaviour
 {
     public Transform playerTransform; 
@@ -19,11 +21,16 @@ public class Enemy : MonoBehaviour
 
     public float moveRotationSpeed;
     public float atkRotationSpeed;
+
+    private NavMeshAgent agent;
     
     // Start is called before the first frame update
     void Start()
     {
         home = transform.position;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = speed;
+        agent.angularSpeed = moveRotationSpeed;
     }
 
     void Update()
@@ -44,20 +51,31 @@ public class Enemy : MonoBehaviour
             
             
         }
+        
         if (Vector3.Distance(transform.position, playerTransform.position) > detectFOV.viewRadius)
         {
             //Debug.Log("추적 중지");
             isFollowing = false;
             isBack = true;
         }
-        if (gun.atkFOV.visibleTargets.Count > 0 && gun.state == "Active" && !nowShooting) //
+        if (gun.atkFOV.visibleTargets.Count > 0)
         {
-            StartCoroutine(volleyRangedAttack(playerTransform));
+            agent.isStopped = true;
+            if(gun.atkFOV.visibleTargets.Count == 0)
+            {
+                agent.isStopped = false;
+            }
+            if(gun.state == "Active" && !nowShooting)
+            {
+                StartCoroutine(volleyRangedAttack(playerTransform));
+            }
+            
         }
         if (isFollowing && !nowShooting)
         {
             //Debug.Log("따라가는중");
-            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, Time.deltaTime * speed);
+            //transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, Time.deltaTime * speed);
+            agent.SetDestination(playerTransform.position);
 
             Vector3 direction = (playerTransform.position - transform.position).normalized;
             Quaternion rotation = Quaternion.LookRotation(direction); // 해당 방향을 바라보는 회전값을 구합니다.
@@ -66,11 +84,19 @@ public class Enemy : MonoBehaviour
         if (isBack && !nowShooting)
         {
             //Debug.Log("돌아가는중");
-            transform.position = Vector3.MoveTowards(transform.position, home, Time.deltaTime * speed);
+            //transform.position = Vector3.MoveTowards(transform.position, home, Time.deltaTime * speed);
+            if(transform.position.x != home.x || transform.position.z != home.z)
+            {
+                agent.SetDestination(home);
+                Vector3 direction = (home - transform.position).normalized;
+                Quaternion rotation = Quaternion.LookRotation(direction); // 해당 방향을 바라보는 회전값을 구합니다.
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * moveRotationSpeed); // 부드럽게 회전하도록 Slerp 함수를 사용합니다.
 
-            Vector3 direction = (home - transform.position).normalized;
-            Quaternion rotation = Quaternion.LookRotation(direction); // 해당 방향을 바라보는 회전값을 구합니다.
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * moveRotationSpeed); // 부드럽게 회전하도록 Slerp 함수를 사용합니다.
+
+            } 
+            
+
+
         }
         if (gun.currentBulletAmount <= 0 && gun.state == "Active")
         {
@@ -81,6 +107,7 @@ public class Enemy : MonoBehaviour
     public IEnumerator volleyRangedAttack(Transform targetTransform)
     {
         nowShooting = true;
+        //agent.isStopped = true;
         while (gun.currentBulletAmount > 0)
         {
 
@@ -88,6 +115,8 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(gun.atkDelay);
         }
         nowShooting = false;
+        agent.isStopped = false;
+
     }
 
     public void rangedAttack(Transform targetTransform)

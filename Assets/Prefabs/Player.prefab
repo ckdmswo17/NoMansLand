@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6645502944366795931}
   - component: {fileID: 683334977450863434}
   - component: {fileID: 5951280516367828478}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -172,12 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
-  speed: 2
+  speed: 3
   gun: {fileID: 1140442376440474212}
-  joystick: {fileID: 6413341637820369722, guid: 3e68ac297152b49cab049095ee62d860,
-    type: 3}
-  moveRotationSpeed: 0
-  atkRotationSpeed: 0
+  joystick: {fileID: 0}
+  moveRotationSpeed: 5
+  atkRotationSpeed: 40
 --- !u!1001 &1346244814110604056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,6 +189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124987408625652082, guid: 4f77ac335dc70436cb75abb31df8c70e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2124987408625652092, guid: 4f77ac335dc70436cb75abb31df8c70e,
         type: 3}
@@ -255,6 +259,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881475138072372665, guid: 4f77ac335dc70436cb75abb31df8c70e,
+        type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
