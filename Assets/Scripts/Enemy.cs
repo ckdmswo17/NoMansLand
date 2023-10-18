@@ -6,8 +6,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform playerTransform; 
+    public Transform playerTransform;
 
+    public float maxHp;
     public float hp;
     public float speed;
     public Vector3 home;
@@ -23,7 +24,9 @@ public class Enemy : MonoBehaviour
     public float atkRotationSpeed;
 
     private NavMeshAgent agent;
-    
+
+    public Transform canvasTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +34,14 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.angularSpeed = moveRotationSpeed;
+
+        hp = maxHp;
     }
 
     void Update()
     {
+        canvasTransform.rotation = Quaternion.Euler(55, 0, 0);
+
         if (hp <= 0)
         {
             Destroy(gameObject);
@@ -147,15 +154,7 @@ public class Enemy : MonoBehaviour
         gun.state = "Active";
     }
 
-    //private void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Bullet") && collision.gameObject.GetComponent<Bullet>().whoShoot == "Player")
-    //    {
-    //        Debug.Log("enemy collision");
-    //        Destroy(collision.gameObject);
-    //        //hp -= collision.gameObject.GetComponent<Bullet>().gunDamage;
-    //    }
-    //}
+    
 
     
 }

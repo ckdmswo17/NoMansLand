@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float maxHp;
     public float hp;
     public float speed;
 
@@ -17,18 +18,23 @@ public class Player : MonoBehaviour
     public float moveRotationSpeed;
     public float atkRotationSpeed;
 
+    public Transform canvasTransform;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        
+        hp = maxHp;
 
-        
     }
 
     void Update()
     {
-        if(hp <= 0)
+        //Quaternion q_hp = Quaternion.LookRotation(hpSliderTransform.position - cam.transform.position);
+        //Vector3 hp_angle = Quaternion.RotateTowards(hpSliderTransform.rotation, q_hp, 300).eulerAngles;
+        canvasTransform.rotation = Quaternion.Euler(55, 0, 0);
+
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
@@ -100,13 +106,4 @@ public class Player : MonoBehaviour
         gun.state = "Active";
     }
 
-    //private void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Bullet") && collision.gameObject.GetComponent<Bullet>().whoShoot == "Enemy")
-    //    {
-    //        Debug.Log("player collision");
-    //        Destroy(collision.gameObject);
-    //        //hp -= collision.gameObject.GetComponent<Bullet>().gunDamage;
-    //    }
-    //}
 }
