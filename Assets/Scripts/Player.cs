@@ -28,7 +28,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        if(hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (gun.atkFOV.visibleTargets.Count > 0)
         {
             if (gun.state == "Active" && joystick.atkAble) // 회전이 섞이지 않게 조이스틱을 놓았을때만 적쪽으로 회전
@@ -45,6 +49,7 @@ public class Player : MonoBehaviour
                 
             }
         }
+
         if (gun.currentBulletAmount <= 0 && gun.state == "Active")
         {
             StartCoroutine(DelayedReload());
@@ -73,6 +78,9 @@ public class Player : MonoBehaviour
     {
         GameObject bullet = Instantiate(gun.bulletPrefab, gun.atkPOS.position, gun.transform.rotation);
         bullet.transform.LookAt(targetTransform.position);
+        Bullet bullet_sc = bullet.GetComponent<Bullet>();
+        bullet_sc.gunDamage = gun.damage;
+        bullet_sc.whoShoot = "Player";
         gun.currentBulletAmount -= 1;
 
        
@@ -91,4 +99,14 @@ public class Player : MonoBehaviour
         gun.currentBulletAmount = gun.maxBulletAmount;
         gun.state = "Active";
     }
+
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Bullet") && collision.gameObject.GetComponent<Bullet>().whoShoot == "Enemy")
+    //    {
+    //        Debug.Log("player collision");
+    //        Destroy(collision.gameObject);
+    //        //hp -= collision.gameObject.GetComponent<Bullet>().gunDamage;
+    //    }
+    //}
 }

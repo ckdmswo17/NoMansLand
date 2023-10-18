@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74826768cd9624e21847dd88d8239fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 1000
   speed: 3
   gun: {fileID: 1140442376440474212}
   joystick: {fileID: 0}
@@ -205,6 +205,11 @@ PrefabInstance:
       propertyPath: atkPOS
       value: 
       objectReference: {fileID: 5942632841070539830}
+    - target: {fileID: 2124987408625652092, guid: 4f77ac335dc70436cb75abb31df8c70e,
+        type: 3}
+      propertyPath: damage
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2124987408625652093, guid: 4f77ac335dc70436cb75abb31df8c70e,
         type: 3}
       propertyPath: m_LocalPosition.x

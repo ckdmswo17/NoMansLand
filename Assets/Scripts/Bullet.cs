@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     public float destroyTime;
     private Rigidbody bulletRigidbody;
 
+    public float gunDamage;
+    public string whoShoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +24,33 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (whoShoot == "Player")
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                
+                Destroy(gameObject);
+                collision.gameObject.GetComponent<Enemy>().hp -= gunDamage;
+                Debug.Log("Enemy HP : " + collision.gameObject.GetComponent<Enemy>().hp);
+            }
+
+        } else
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                
+                Destroy(gameObject);
+                collision.gameObject.GetComponent<Player>().hp -= gunDamage;
+                Debug.Log("Player HP : " + collision.gameObject.GetComponent<Player>().hp);
+            }
+        }
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -35,7 +35,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (nowShooting)
         {
             Vector3 direction = (playerTransform.position - transform.position).normalized;
@@ -123,6 +127,9 @@ public class Enemy : MonoBehaviour
     {
         GameObject bullet = Instantiate(gun.bulletPrefab, gun.atkPOS.position, transform.rotation);
         bullet.transform.LookAt(targetTransform.position);
+        Bullet bullet_sc = bullet.GetComponent<Bullet>();
+        bullet_sc.gunDamage = gun.damage;
+        bullet_sc.whoShoot = "Enemy";
         gun.currentBulletAmount -= 1;
         //Debug.Log(gun.currentBulletAmount);
     }
@@ -139,4 +146,16 @@ public class Enemy : MonoBehaviour
         gun.currentBulletAmount = gun.maxBulletAmount;
         gun.state = "Active";
     }
+
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Bullet") && collision.gameObject.GetComponent<Bullet>().whoShoot == "Player")
+    //    {
+    //        Debug.Log("enemy collision");
+    //        Destroy(collision.gameObject);
+    //        //hp -= collision.gameObject.GetComponent<Bullet>().gunDamage;
+    //    }
+    //}
+
+    
 }
