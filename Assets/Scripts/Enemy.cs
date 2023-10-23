@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     public Gun gun; // 임시로 ak47 기본 무기로 넣어놓음
 
-    private bool isFollowing = false;
+    public bool isFollowing = false;
     private bool isBack = false;
     private bool nowShooting = false;
 

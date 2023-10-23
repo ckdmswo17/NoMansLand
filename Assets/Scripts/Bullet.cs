@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
                 
                 Destroy(gameObject);
                 collision.gameObject.GetComponent<Enemy>().hp -= gunDamage;
+                collision.gameObject.GetComponent<Enemy>().isFollowing = true; // 자신의 시야내에 없어도 맞으면 바로 추적상태로 전환
                 Debug.Log("Enemy HP : " + collision.gameObject.GetComponent<Enemy>().hp);
             }
 
