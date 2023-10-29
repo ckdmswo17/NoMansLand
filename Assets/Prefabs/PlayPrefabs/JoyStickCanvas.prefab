@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3695364335642052497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f78c1dae99e34c56a8a8dab461e635c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a623e28f897833439faefe89cdd97b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollbar: {fileID: 8569043858251353899}
@@ -1875,13 +1875,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6303363313843785043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9cf69648d914f0aba794af6ec13501, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aea2724c48f5c54f85215115bec1f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   smallStick: {fileID: 7213657471055873318}
   bGStick: {fileID: 4599319215030617134}
   joyVec: {x: 0, y: 0, z: 0}
-  go_Player: {fileID: 0}
+  go_Player: {fileID: 3638801711928608893, guid: d5e15578f5be74acd951f7b8c65fb448,
+    type: 3}
   atkAble: 1
 --- !u!114 &1066393187921134368
 MonoBehaviour:
