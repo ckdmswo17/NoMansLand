@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4545259921748671491}
   - component: {fileID: 1462931711702607204}
   - component: {fileID: 1240099490332264427}
-  - component: {fileID: 1407603304925671608}
+  - component: {fileID: 3654157082660708487}
   m_Layer: 5
   m_Name: HpCanvas
   m_TagString: Untagged
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1407603304925671608
+--- !u!114 &3654157082660708487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3274676513478250656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 892b26851e53d410f957f7fda066774c, type: 3}
+  m_Script: {fileID: 11500000, guid: eeb74766b909d3647b4b1630795655d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_sc: {fileID: 8806499389984233617}
@@ -232,10 +232,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6906735119313241028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb849461e61cf4714b3b193d06ac492c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a398c1f9b4847e40a3da4be89b56764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 8
+  viewRadius: 15
   viewAngle: 180
   targetMask:
     serializedVersion: 2
@@ -531,18 +531,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8806499389984233627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b6912bd7020c480c8dab70ddfff944e, type: 3}
+  m_Script: {fileID: 11500000, guid: 91b08f17861608b4bb61cb28137f25f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
   maxHp: 500
-  hp: 500
-  speed: 2
+  hp: 0
+  speed: 3
   home: {x: 0, y: 0, z: 0}
   detectFOV: {fileID: 7374879754199697084}
-  gun: {fileID: 8806499390810176304}
-  moveRotationSpeed: 5
-  atkRotationSpeed: 40
+  gun: {fileID: 5939032089253175095}
+  isFollowing: 0
+  moveRotationSpeed: 10
+  atkRotationSpeed: 10
   canvasTransform: {fileID: 4836330344856742121}
 --- !u!95 &8806499389984233616
 Animator:
@@ -763,26 +764,87 @@ PrefabInstance:
       propertyPath: obstacleMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6881475138072372665, guid: 4f77ac335dc70436cb75abb31df8c70e, type: 3}
+    - {fileID: 2124987408625652092, guid: 4f77ac335dc70436cb75abb31df8c70e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2124987408625652082, guid: 4f77ac335dc70436cb75abb31df8c70e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5939032089253175095}
+    - targetCorrespondingSourceObject: {fileID: 3468593165979814927, guid: 4f77ac335dc70436cb75abb31df8c70e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3510486340689157987}
   m_SourcePrefab: {fileID: 100100000, guid: 4f77ac335dc70436cb75abb31df8c70e, type: 3}
---- !u!114 &8806499390810176304 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2124987408625652092, guid: 4f77ac335dc70436cb75abb31df8c70e,
+--- !u!4 &2854485913658074466 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4672110315441377070, guid: 4f77ac335dc70436cb75abb31df8c70e,
     type: 3}
   m_PrefabInstance: {fileID: 7443183836099275340}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!1 &6298683579760338499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3468593165979814927, guid: 4f77ac335dc70436cb75abb31df8c70e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7443183836099275340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3510486340689157987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298683579760338499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8b5ea12073e4b9c8d414b7a325a21b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a398c1f9b4847e40a3da4be89b56764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewRadius: 4
+  viewAngle: 180
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  visibleTargets: []
 --- !u!4 &8806499390810176305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2124987408625652093, guid: 4f77ac335dc70436cb75abb31df8c70e,
     type: 3}
   m_PrefabInstance: {fileID: 7443183836099275340}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8806499390810176318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2124987408625652082, guid: 4f77ac335dc70436cb75abb31df8c70e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7443183836099275340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5939032089253175095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806499390810176318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb547b1028452a40991e80beb4ed24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: Active
+  damage: 100
+  atkDelay: 0.3
+  reloadDelay: 20
+  maxBulletAmount: 20
+  currentBulletAmount: 0
+  maxDurability: 0
+  currentDurability: 0
+  atkFOV: {fileID: 3510486340689157987}
+  bulletPrefab: {fileID: 1472437071575570918, guid: 53750aa7aea76440fb8f9b0a54bfa533,
+    type: 3}
+  atkPOS: {fileID: 2854485913658074466}

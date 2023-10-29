@@ -143,10 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472437071575570918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94132190fa834948b9adb9b3395aa3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 34157a965e5a7cc4f95875f228c784a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 4
   destroyTime: 5
   gunDamage: 0
   whoShoot: 
