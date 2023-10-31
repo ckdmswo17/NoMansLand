@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     public float maxHp;
     public float hp;
-    public float speed; // 
+    public float speed; // dd
     public Vector3 home;
     public FieldOfView detectFOV;
 
