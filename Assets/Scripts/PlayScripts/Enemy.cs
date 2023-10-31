@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     public float maxHp;
     public float hp;
-    public float speed; // dd
+    public float speed; 
     public Vector3 home;
     public FieldOfView detectFOV;
 
@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
 
     public Transform canvasTransform;
+
+    public GameObject deadBodyFactory;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,9 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
+            GameObject deadBody = Instantiate(deadBodyFactory);
+            deadBody.transform.position = transform.position;
+
             Destroy(gameObject);
         }
 

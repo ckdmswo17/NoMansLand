@@ -534,7 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b08f17861608b4bb61cb28137f25f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 6645502944366795933, guid: d5e15578f5be74acd951f7b8c65fb448,
+    type: 3}
   maxHp: 500
   hp: 0
   speed: 3
@@ -545,6 +546,8 @@ MonoBehaviour:
   moveRotationSpeed: 10
   atkRotationSpeed: 10
   canvasTransform: {fileID: 4836330344856742121}
+  deadBodyFactory: {fileID: 8806499389984233627, guid: f413e8c01e46f4bf58d1689b20839f32,
+    type: 3}
 --- !u!95 &8806499389984233616
 Animator:
   serializedVersion: 5
@@ -839,7 +842,7 @@ MonoBehaviour:
   state: Active
   damage: 100
   atkDelay: 0.3
-  reloadDelay: 20
+  reloadDelay: 10
   maxBulletAmount: 20
   currentBulletAmount: 0
   maxDurability: 0

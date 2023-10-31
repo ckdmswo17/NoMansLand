@@ -96,12 +96,14 @@ public class Player : MonoBehaviour
     IEnumerator DelayedReload()
     {
         gun.state = "Reload";
+        Debug.Log("장전 시작");
         yield return new WaitForSeconds(gun.reloadDelay);
         Reload();
     }
 
     public void Reload()
     {
+        Debug.Log("장전 끝");
         gun.currentBulletAmount = gun.maxBulletAmount;
         gun.state = "Active";
     }
