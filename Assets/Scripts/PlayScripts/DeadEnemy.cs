@@ -5,12 +5,11 @@ using UnityEngine;
 public class DeadEnemy : MonoBehaviour
 {
 
-    private GameObject interactionButton;
+    private UIManager uiManager;
     // Start is called before the first frame update
     void Start()
     {
-        interactionButton = GameObject.Find("InteractionButton");
-        interactionButton.SetActive(false);
+        uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
 
         Destroy(gameObject, 20f); // 아이템 넣기 전에 임시로 자동파괴 넣어놓음
 
@@ -27,7 +26,7 @@ public class DeadEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")){
-            interactionButton.SetActive(true);
+            uiManager.interactionButtonOnOff(true);
         }
     }
 
@@ -35,7 +34,7 @@ public class DeadEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            interactionButton.SetActive(false);
+            uiManager.interactionButtonOnOff(false);
         }
     }
 

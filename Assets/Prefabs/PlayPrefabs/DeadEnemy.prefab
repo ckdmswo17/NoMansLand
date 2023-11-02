@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8806499389984233628}
   - component: {fileID: 8806499389984233629}
   - component: {fileID: 8806499389984233626}
-  - component: {fileID: 8806499389984233617}
   - component: {fileID: 8806499389984233616}
   - component: {fileID: 8496651150193919745}
   - component: {fileID: -5701772631102854357}
@@ -112,30 +111,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8806499389984233617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8806499389984233627}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b08f17861608b4bb61cb28137f25f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
-  maxHp: 500
-  hp: 0
-  speed: 3
-  home: {x: 0, y: 0, z: 0}
-  detectFOV: {fileID: 0}
-  gun: {fileID: 5939032089253175095}
-  isFollowing: 0
-  moveRotationSpeed: 10
-  atkRotationSpeed: 10
-  canvasTransform: {fileID: 0}
-  deadBodyFactory: {fileID: 0}
 --- !u!95 &8806499389984233616
 Animator:
   serializedVersion: 5
@@ -196,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae57b123ef405437ea7d63b56a32d704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionButton: {fileID: 0}
 --- !u!1001 &7443183836099275340
 PrefabInstance:
   m_ObjectHideFlags: 0
