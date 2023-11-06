@@ -12,12 +12,17 @@ public class PopUpScirpt : MonoBehaviour
     {
         
     }
-
+    
     // Update is called once per frame
     public void PopUpInfo(ItemData _itemData)
     {
 
         GameObject popup = GameObject.Find("PopUp_Inventory");
+
+        Transform _image = popup.transform.GetChild(0);
+       
+
+
         Transform name = popup.transform.GetChild(1);
          name.GetChild(0).GetComponent<TextMeshProUGUI>().text ="이름 :"+ _itemData.name;
         Transform price = popup.transform.GetChild(2);
@@ -26,7 +31,8 @@ public class PopUpScirpt : MonoBehaviour
 
         switch (_itemData.type)
         {
-            case "UsableItem": UsableItem usableitem = (UsableItem)_itemData;
+            case "UsableItem": 
+                UsableItem usableitem = (UsableItem)_itemData;
                 descript.GetChild(0).GetComponent<TextMeshProUGUI>().text = "공격력: " + usableitem.Damage.ToString(); break;
             case "Equip":
                 Equip equip = (Equip)_itemData;

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
             type = _type; battle_type = _battle_type; name = _name; durability = _durability; damage = _damage; perUsability = _perUsability;
         }
     }*/
-    public GameObject itemSource;
+    public GameObject itemSource,popupInventory,popupInventoryManager;
    // public TextAsset ItemDatabase;
     public List<ItemData> AllItemList, MyItemList, CurItemList;
     private string filePath = "/resource/MyItemText.txt";
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Image[] StashTabImage, StashItemImage;
     public Sprite TabIdleSprite, TabSelectSprite;
     public Sprite[] ItemSprite;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -76,9 +77,10 @@ public class GameManager : MonoBehaviour
         // 해당아이템 자료를 팝업  오브젝트에 넘겨준다. 
         ItemData CurItem = CurItemList[slotNum];
         Debug.Log(CurItem.name);
-        GameObject.Find("PopUp_Inventory").SetActive(true);
+        popupInventory.SetActive(true);
         
-       // popup.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
+        popupInventoryManager.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
+
         
     }
     public void StashTabClick(string tabName)
