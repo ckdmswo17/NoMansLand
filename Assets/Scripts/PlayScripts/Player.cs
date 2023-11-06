@@ -93,15 +93,17 @@ public class Player : MonoBehaviour
         //Debug.Log(gun.currentBulletAmount);
     }
 
-    IEnumerator DelayedReload()
+    IEnumerator DelayedReload() // 플레이어만 장전 안되는 문제 해결해야할듯
     {
         gun.state = "Reload";
+        Debug.Log("장전 시작");
         yield return new WaitForSeconds(gun.reloadDelay);
         Reload();
     }
 
     public void Reload()
     {
+        Debug.Log("장전 끝");
         gun.currentBulletAmount = gun.maxBulletAmount;
         gun.state = "Active";
     }
