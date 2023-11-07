@@ -21,7 +21,7 @@ public class GameManagement : MonoBehaviour
     public GameObject itemSource,popUp;
   
     public List<ItemData> AllItemList, MyItemList, CurItemList;
-    private string filePath = "/Resource/SlotIcon/ShopItem.txt";
+    private string filePath = "/ShopItem.txt";
     public string curType = "UsableItem";
     public GameObject[] Slot;
     public Image[] TabImage, ItemImage;
@@ -118,11 +118,11 @@ public class GameManagement : MonoBehaviour
     {
         string jdata = ConvertListToJson(AllItemList);
         print(jdata);
-        File.WriteAllText(Application.dataPath + filePath, jdata);
+        File.WriteAllText(Application.streamingAssetsPath + filePath, jdata);
     }
     void Load()
     {
-        string jdata = File.ReadAllText(Application.dataPath + filePath);
+        string jdata = File.ReadAllText(Application.streamingAssetsPath + filePath);
         MyItemList = ConvertJsonToList<ItemData>(jdata);
         TabClick(curType);
     }

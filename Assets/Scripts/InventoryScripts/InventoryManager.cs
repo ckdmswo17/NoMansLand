@@ -24,7 +24,7 @@ public class InventoryManager : MonoBehaviour
    // public TextAsset ItemDatabase;
     public List<ItemData> AllItemList, MyStashItemList, CurStashItemList;
     
-    private string filePath = "/resource/MyItemText.txt";
+    private string filePath = "/MyItemText.txt";
     public string curType = "All";
     public GameObject[] Stash_Slot;
     public Image[] StashTabImage, StashItemImage;
@@ -134,11 +134,11 @@ public class InventoryManager : MonoBehaviour
     {
         string jdata = ConvertListToJson(AllItemList);
         print(jdata);
-        File.WriteAllText(Application.dataPath + filePath, jdata);
+        File.WriteAllText(Application.streamingAssetsPath + filePath, jdata);
     }
     void Load()
     {
-        string jdata = File.ReadAllText(Application.dataPath + filePath);
+        string jdata = File.ReadAllText(Application.streamingAssetsPath + filePath);
         MyStashItemList = ConvertJsonToList<ItemData>(jdata);
         StashTabClick(curType);
     }
