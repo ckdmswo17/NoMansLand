@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject deadBodyFactory;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +91,8 @@ public class Enemy : MonoBehaviour
         }
         if (isFollowing && !nowShooting)
         {
+            animator.SetBool("isRun", true);
+            animator.SetBool("isRangedAttack", false);
             //Debug.Log("따라가는중");
             //transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, Time.deltaTime * speed);
             agent.SetDestination(playerTransform.position);
@@ -99,10 +103,15 @@ public class Enemy : MonoBehaviour
         }
         if (isBack && !nowShooting)
         {
+            animator.SetBool("isRun", false);
+            animator.SetBool("isRangedAttack", false);
+
             //Debug.Log("돌아가는중");
             //transform.position = Vector3.MoveTowards(transform.position, home, Time.deltaTime * speed);
-            if(transform.position.x != home.x || transform.position.z != home.z)
+            if (transform.position.x != home.x || transform.position.z != home.z)
             {
+                animator.SetBool("isRun", true);
+                animator.SetBool("isRangedAttack", false);
                 agent.SetDestination(home);
                 Vector3 direction = (home - transform.position).normalized;
                 Quaternion rotation = Quaternion.LookRotation(direction); // 해당 방향을 바라보는 회전값을 구합니다.
@@ -122,6 +131,9 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator volleyRangedAttack(Transform targetTransform)
     {
+        animator.SetBool("isRun", false);
+        animator.SetBool("isRangedAttack", true);
+
         nowShooting = true;
         //agent.isStopped = true;
         while (gun.currentBulletAmount > 0)
@@ -132,6 +144,9 @@ public class Enemy : MonoBehaviour
         }
         nowShooting = false;
         agent.isStopped = false;
+
+        animator.SetBool("isRun", false);
+        animator.SetBool("isRangedAttack", false);
 
     }
 

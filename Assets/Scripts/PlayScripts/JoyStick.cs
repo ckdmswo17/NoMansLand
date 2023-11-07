@@ -49,6 +49,7 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
         
         if (isTouch)
         {
+            
             go_Player.transform.position += movePosition;
 
             Vector3 direction = new Vector3(joyVec.x, 0, joyVec.y).normalized;
@@ -61,7 +62,10 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
 
     public void PointDown()
     {
-        //Debug.Log("ui 누름 ");      
+        //Debug.Log("ui 누름 ");
+        player_sc.animator.SetBool("isRangedAttack", false);
+        player_sc.animator.SetBool("isRun", true);
+
         isTouch = true;
         atkAble = false;
         bGStick.SetActive(true);
@@ -72,6 +76,7 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
 
     public void Drag(BaseEventData baseEventData)
     {
+        
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         Vector3 DragPosition = pointerEventData.position;
         joyVec = (DragPosition - stickFirstPosition).normalized;
@@ -95,6 +100,7 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
     public void Drop() // 드래그 후 땠을때 
     {
         
+        player_sc.animator.SetBool("isRun", false);
         isTouch = false;
         atkAble = true;
         joyVec = Vector3.zero;
@@ -107,7 +113,7 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
 
     public void PointUp() // 드래그 하고 땠을때 + 안하고 땠을때
     {
-        
+        player_sc.animator.SetBool("isRun", false);
         isTouch = false;
         atkAble = true;
         joyVec = Vector3.zero;

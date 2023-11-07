@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     public float gunDamage;
     public string whoShoot;
 
+    public GameObject bloodEffectFactory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,24 +30,39 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+
         if (whoShoot == "Player")
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+                GameObject bloodEffect = Instantiate(bloodEffectFactory);
+                bloodEffect.transform.position = transform.position;
+                Destroy(bloodEffect, 0.35f);
+
                 Destroy(gameObject);
-                collision.gameObject.GetComponent<Enemy>().hp -= gunDamage;
-                collision.gameObject.GetComponent<Enemy>().isFollowing = true; // 자신의 시야내에 없어도 맞으면 바로 추적상태로 전환
-                Debug.Log("Enemy HP : " + collision.gameObject.GetComponent<Enemy>().hp);
+                enemy.hp -= gunDamage;
+                enemy.isFollowing = true; // 자신의 시야내에 없어도 맞으면 바로 추적상태로 전환
+                enemy.animator.SetTrigger("isAttacked");
+                
+                Debug.Log("Enemy HP : " + enemy.hp);
             }
 
         } else
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                
+                Player player = collision.gameObject.GetComponent<Player>();
+
+                GameObject bloodEffect = Instantiate(bloodEffectFactory);
+                bloodEffect.transform.position = transform.position;
+                Destroy(bloodEffect, 0.35f);
+
                 Destroy(gameObject);
-                collision.gameObject.GetComponent<Player>().hp -= gunDamage;
-                Debug.Log("Player HP : " + collision.gameObject.GetComponent<Player>().hp);
+                player.hp -= gunDamage;
+                player.animator.SetTrigger("isAttacked");
+                Debug.Log("Player HP : " + player.hp);
             }
         }
         if (collision.gameObject.CompareTag("Obstacle"))
