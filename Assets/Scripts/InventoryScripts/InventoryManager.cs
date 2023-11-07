@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
 
   /*  [System.Serializable]
@@ -20,8 +20,10 @@ public class GameManager : MonoBehaviour
         }
     }*/
     public GameObject itemSource;
+    public GameObject popUp;
    // public TextAsset ItemDatabase;
-    public List<ItemData> AllItemList, MyItemList, CurItemList;
+    public List<ItemData> AllItemList, MyStashItemList, CurStashItemList;
+    
     private string filePath = "/resource/MyItemText.txt";
     public string curType = "All";
     public GameObject[] Stash_Slot;
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
         Save();
         Load();
        //AddStashImage();
-        AddStashSlotListener();
+       //AddStashSlotListener();
 
     }
 
@@ -73,12 +75,15 @@ public class GameManager : MonoBehaviour
         }
     }
     public void SlotClick(int slotNum) {
-        // 해당아이템 자료를 팝업  오브젝트에 넘겨준다. 
-        ItemData CurItem = CurItemList[slotNum];
+        ItemData CurItem = MyStashItemList[slotNum];
         Debug.Log(CurItem.name);
-        GameObject.Find("PopUp_Inventory").SetActive(true);
-        
-       // popup.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
+
+        //popUpManager.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
+        popUp.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "이름 :" + CurItem.name;
+        popUp.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "가격 :" + CurItem.price;
+
+       
+        popUp.transform.GetChild(1).GetComponent<Image>().sprite = Stash_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
         
     }
     public void StashTabClick(string tabName)
@@ -87,23 +92,23 @@ public class GameManager : MonoBehaviour
         curType = tabName;
         if (tabName == "All")
         {
-            CurItemList = MyItemList;
+            CurStashItemList = MyStashItemList;
         }
         else
         {
-            CurItemList = MyItemList.FindAll(x => x.type == tabName);
+            CurStashItemList = MyStashItemList.FindAll(x => x.type == tabName);
         }
 
 
         for (int i = 0; i < Stash_Slot.Length; i++)
          {
-           bool isExist = i < CurItemList.Count;
+           bool isExist = i < CurStashItemList.Count;
             Stash_Slot[i].SetActive(isExist);
-            Stash_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ?  CurItemList[i].name : "";
+            Stash_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? CurStashItemList[i].name : "";
 
             if (isExist)
             {
-                StashItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.name == CurItemList[i].name)];
+                StashItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.name == CurStashItemList[i].name)];
             }
        
         }
@@ -134,7 +139,7 @@ public class GameManager : MonoBehaviour
     void Load()
     {
         string jdata = File.ReadAllText(Application.dataPath + filePath);
-        MyItemList = ConvertJsonToList<ItemData>(jdata);
+        MyStashItemList = ConvertJsonToList<ItemData>(jdata);
         StashTabClick(curType);
     }
 
