@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PopUpScirpt : MonoBehaviour
 {
-    
+    public GameObject popup;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,7 @@ public class PopUpScirpt : MonoBehaviour
     public void PopUpInfo(ItemData _itemData)
     {
 
+<<<<<<< Updated upstream
         GameObject popup = GameObject.Find("PopUp_Inventory");
 
         Transform _image = popup.transform.GetChild(0);
@@ -42,6 +43,11 @@ public class PopUpScirpt : MonoBehaviour
                 descript.GetChild(0).GetComponent<TextMeshProUGUI>().text = "¿¡³ÊÁö: " + food.Value.ToString(); break;
 
         }
+=======
+       
+    
+      
+>>>>>>> Stashed changes
 
     }
 }
