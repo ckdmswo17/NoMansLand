@@ -76,15 +76,17 @@ public class Enemy : MonoBehaviour
             isFollowing = false;
             isBack = true;
         }
-        if (gun.atkFOV.visibleTargets.Count > 0)
-        {
-            agent.isStopped = true;
+        if (gun.atkFOV.visibleTargets.Count > 0) { // 사거리 내에 들어옴
+            animator.SetBool("isRun", false);
+            animator.SetBool("isRangedAttack", false);
+            
             if(gun.atkFOV.visibleTargets.Count == 0)
             {
                 agent.isStopped = false;
             }
             if(gun.state == "Active" && !nowShooting)
             {
+                
                 StartCoroutine(volleyRangedAttack(playerTransform));
             }
             
@@ -131,6 +133,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator volleyRangedAttack(Transform targetTransform)
     {
+        agent.isStopped = true;
         animator.SetBool("isRun", false);
         animator.SetBool("isRangedAttack", true);
 

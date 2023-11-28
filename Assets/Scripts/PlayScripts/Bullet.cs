@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Player HP : " + player.hp);
             }
         }
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             Destroy(gameObject);
         }
