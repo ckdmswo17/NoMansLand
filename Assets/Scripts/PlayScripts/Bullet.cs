@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
 
     public GameObject bloodEffectFactory;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,7 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 Player player = collision.gameObject.GetComponent<Player>();
+                player.audioSource.Play();
 
                 GameObject bloodEffect = Instantiate(bloodEffectFactory);
                 bloodEffect.transform.position = transform.position;

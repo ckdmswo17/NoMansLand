@@ -50,8 +50,8 @@ public class Enemy : MonoBehaviour
         {
             GameObject deadBody = Instantiate(deadBodyFactory);
             deadBody.transform.position = transform.position;
-
             Destroy(gameObject);
+
         }
 
         if (nowShooting)
@@ -141,7 +141,10 @@ public class Enemy : MonoBehaviour
         //agent.isStopped = true;
         while (gun.currentBulletAmount > 0)
         {
-
+            if (hp <= 0)
+            {
+                break;
+            }
             rangedAttack(targetTransform);
             yield return new WaitForSeconds(gun.atkDelay);
         }
@@ -161,6 +164,8 @@ public class Enemy : MonoBehaviour
         bullet_sc.gunDamage = gun.damage;
         bullet_sc.whoShoot = "Enemy";
         gun.currentBulletAmount -= 1;
+
+        gun.audioSource.Play();
         //Debug.Log(gun.currentBulletAmount);
     }
 
@@ -177,7 +182,7 @@ public class Enemy : MonoBehaviour
         gun.state = "Active";
     }
 
-    
 
-    
+
+
 }

@@ -25,13 +25,14 @@ public class Gun : MonoBehaviour
     public FieldOfView atkFOV;
     public GameObject bulletPrefab;
     public Transform atkPOS;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         currentDurability = maxDurability;
         currentBulletAmount = maxBulletAmount;
-        
+        audioSource = GetComponent<AudioSource>();  
       
     }
 

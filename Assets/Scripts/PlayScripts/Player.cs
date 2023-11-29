@@ -20,10 +20,19 @@ public class Player : MonoBehaviour
 
     public Transform canvasTransform;
 
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public GameObject audio;
+
+    private UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
+        audio = GameObject.Find("AudioManager");
         hp = maxHp;
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -35,7 +44,9 @@ public class Player : MonoBehaviour
 
         if (hp <= 0)
         {
+            audio.GetComponent<AudioSource>().PlayOneShot(audioClip);
             Destroy(gameObject);
+            uiManager.GoToFailResult();
         }
 
         if (gun.atkFOV.visibleTargets.Count > 0)
@@ -99,6 +110,7 @@ public class Player : MonoBehaviour
             bullet_sc.whoShoot = "Player";
             gun.currentBulletAmount -= 1;
 
+            gun.audioSource.Play();
 
             Debug.Log(gun.currentBulletAmount);
         }

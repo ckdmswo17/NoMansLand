@@ -6,12 +6,15 @@ public class DeadEnemy : MonoBehaviour
 {
 
     private UIManager uiManager;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
 
-        Destroy(gameObject, 20f); // 아이템 넣기 전에 임시로 자동파괴 넣어놓음
+        StartCoroutine(DelayedDead());
+        Destroy(gameObject, 60f); // 아이템 넣기 전에 임시로 자동파괴 넣어놓음
 
         // 아이템 목록 설정하는 코드
     }
@@ -19,7 +22,7 @@ public class DeadEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
 
     }
 
@@ -36,6 +39,14 @@ public class DeadEnemy : MonoBehaviour
         {
             uiManager.interactionButtonOnOff(false);
         }
+    }
+
+    IEnumerator DelayedDead() 
+    {
+        yield return new WaitForSeconds(2f);
+        animator.SetTrigger("isIdle");
+        transform.position -= new Vector3(0, 1, 0);
+        transform.rotation = Quaternion.Euler(90, 0, 0);
     }
 
 }

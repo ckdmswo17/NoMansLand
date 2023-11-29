@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayScene.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/ResultInterface.unity
+    guid: 05b2cfd3f9ae64ebab60d953d7ec5c66
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: f901261ab91d2a540a727c6d7eac8469, type: 2}
