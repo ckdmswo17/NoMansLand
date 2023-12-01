@@ -25,15 +25,18 @@ public class ItemDataInitialize : MonoBehaviour
             }
             else if (type == "Equip")
             {
-                AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]),float.Parse(row[3]), float.Parse(row[4]), float.Parse(row[5])));
+                AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), float.Parse(row[3]), float.Parse(row[4]), float.Parse(row[5])));
             }
-            else if (type == "Food")
-            {  
+            else if (type == "Food")//Food	Meat	500	350		
+            {
                 AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), float.Parse(row[3])));
             }
-            else
+            else if (type == "Unusable")
             {
                 AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2])));
+            }
+            else { 
+                                
             }
 
         }
@@ -162,14 +165,13 @@ public class Equip
 }
 public class Food 
 {
-    private float value;
+    private float energy;
 
 
 
-    public Food(float value) 
-    {
-        this.value = value;
+    public Food(float energy) { 
+        this.energy = energy;
     }
 
-    public float Value { get => value; set => this.value = value; }
+    public float Energy { get => energy; set => energy = value; }
 }

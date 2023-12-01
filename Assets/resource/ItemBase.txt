@@ -3,4 +3,4 @@ Food	Meat	500	350
 UsableItem	Axe	650	0	200	50	5	100	10	0
 UsableItem	Bow	70	1	5	30	3	60	5	0
 UsableItem	Steroid	3000	2	0	0	0	0	0	50
-UnUsable	Gem	5000							
+Unusable	Gem	5000							
