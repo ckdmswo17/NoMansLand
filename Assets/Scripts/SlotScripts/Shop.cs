@@ -18,9 +18,9 @@ public class Shop : MonoBehaviour
     public Transform tfEquipment;
     public Transform tfConsumable;
 
-    private List<Item> weaponList = new List<Item>();
-    private List<Item> equipmentList = new List<Item>();
-    private List<Item> consumableList = new List<Item>();
+    private List<Item> weaponList;
+    private List<Item> equipmentList;
+    private List<Item> consumableList;
 
 
 
@@ -80,16 +80,11 @@ public class Shop : MonoBehaviour
         consumableList.Add(new Item(4, 50000, Item.ItemType.Consumable));
         consumableList.Add(new Item(5, 50000, Item.ItemType.Consumable));
         consumableList.Add(new Item(6, 50000, Item.ItemType.Consumable));
-        showItem();
-    }
-
-    void Update()
-    {
-        
+        ShowItem();
     }
 
 
-    public void showItem()
+    public void ShowItem()
     {
         for(int i = 0; i < weaponList.Count; i++)
         {
@@ -102,7 +97,7 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void removeSlot()
+    public void RemoveSlot()
     {
         for(int i = 0; i < weaponSlots.Length; i++) 
         {
