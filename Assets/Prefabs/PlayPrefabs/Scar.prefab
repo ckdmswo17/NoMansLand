@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6365755260880398859}
   - component: {fileID: 8041040293349097182}
   m_Layer: 6
-  m_Name: AK47
+  m_Name: Scar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

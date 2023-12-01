@@ -8,12 +8,13 @@ public class Player : MonoBehaviour
     public float hp;
     public float speed;
 
+    public List<GameObject> guns;
     public Gun gun;
 
     public Animator animator;
 
     public JoyStick joystick;
-    private bool nowShooting = false; // update문의 연사 함수 다중호출을 막기위해 1개의 연사 함수가 실행중임을 의미하는 플래그
+    public bool nowShooting = false; // update문의 연사 함수 다중호출을 막기위해 1개의 연사 함수가 실행중임을 의미하는 플래그
 
     public float moveRotationSpeed;
     public float atkRotationSpeed;
@@ -25,12 +26,12 @@ public class Player : MonoBehaviour
     public GameObject audio;
 
     private UIManager uiManager;
+    public WeaponGroup weaponGroup;
 
     // Start is called before the first frame update
     void Start()
     {
         uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
-        audio = GameObject.Find("AudioManager");
         hp = maxHp;
         audioSource = GetComponent<AudioSource>();
 
@@ -51,8 +52,10 @@ public class Player : MonoBehaviour
 
         if (gun.atkFOV.visibleTargets.Count > 0)
         {
+  
             if (gun.state == "Active" && joystick.atkAble) // 회전이 섞이지 않게 조이스틱을 놓았을때만 적쪽으로 회전
             {
+                Debug.Log(nowShooting);
                 Vector3 direction = transform.position.normalized;
                 if (gun.atkFOV.visibleTargets[0] != null)
                 {
@@ -130,6 +133,24 @@ public class Player : MonoBehaviour
         Debug.Log("장전 끝");
         gun.currentBulletAmount = gun.maxBulletAmount;
         gun.state = "Active";
+    }
+
+    public void weaponChange(int index)
+    {
+        for(int i = 0; i < guns.Capacity; i++)
+        {
+            if(guns[i] != null)
+            {
+                if(i == index)
+                {
+                    guns[i].SetActive(true);
+                    gun = guns[i].GetComponent<Gun>();
+                } else
+                {
+                    guns[i].SetActive(false);
+                }
+            }
+        }
     }
 
 }

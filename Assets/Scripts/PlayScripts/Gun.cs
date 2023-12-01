@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public static Gun instance = null;
+
     public string state; // Active(플레이 중 발사 가능), Reload(장전 중), Item(메인화면에서 쓰거나 플레이화면 오브젝트로 쓰일때)
 
     public float damage;
@@ -27,13 +29,21 @@ public class Gun : MonoBehaviour
     public Transform atkPOS;
     public AudioSource audioSource;
 
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        currentDurability = maxDurability;
+        currentBulletAmount = maxBulletAmount;
+        audioSource = GetComponent<AudioSource>();
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        currentDurability = maxDurability;
-        currentBulletAmount = maxBulletAmount;
-        audioSource = GetComponent<AudioSource>();  
-      
+        
     }
 
     // Update is called once per frame

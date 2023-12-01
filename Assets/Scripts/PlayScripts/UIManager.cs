@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
         interactionButton.SetActive(false);
         escapeButton.SetActive(false);
         DontDestroyOnLoad(gameObject);
+
+
     }
 
     // Update is called once per frame

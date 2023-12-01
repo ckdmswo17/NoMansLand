@@ -467,6 +467,9 @@ MonoBehaviour:
   atkRotationSpeed: 50
   canvasTransform: {fileID: 350771945015180113}
   audioSource: {fileID: 1351101323085460959}
+  audioClip: {fileID: 8300000, guid: d30c820ff550c794a86e903ad647e4ee, type: 3}
+  audio: {fileID: 0}
+  weaponGroup: {fileID: 0}
 --- !u!114 &2987561352120619656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,6 +1139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: obstacleMask.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041040293349097182, guid: 4f77ac335dc70436cb75abb31df8c70e,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2124987408625652092, guid: 4f77ac335dc70436cb75abb31df8c70e, type: 3}
