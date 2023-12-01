@@ -13,12 +13,21 @@ public class PlayerAttackFOVCircle : MonoBehaviour
     private LineRenderer line;
     
 
-    private void Start()
+    private void Awake()
     {
         line = GetComponent<LineRenderer>();
         player_sc = GetComponent<Player>();
         attackRange = player_sc.gun.atkFOV.viewRadius;
         DrawCircle();
+    }
+
+    public void awake2()
+    {
+        line = GetComponent<LineRenderer>();
+        player_sc = GetComponent<Player>();
+        attackRange = player_sc.gun.atkFOV.viewRadius;
+        DrawCircle();
+        return;
     }
 
     void DrawCircle()
