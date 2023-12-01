@@ -1,4 +1,4 @@
-Equip	Helmet	3000	300	0	0				
+Equip	Helmet	3000	300	10	10				
 Food	Meat	500	350						
 UsableItem	Axe	650	0	200	50	5	100	10	0
 UsableItem	Bow	70	1	5	30	3	60	5	0
