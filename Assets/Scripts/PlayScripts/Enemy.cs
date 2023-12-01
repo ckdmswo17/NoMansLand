@@ -18,12 +18,12 @@ public class Enemy : MonoBehaviour
 
     public bool isFollowing = false;
     private bool isBack = false;
-    private bool nowShooting = false;
+    public bool nowShooting = false;
 
     public float moveRotationSpeed;
     public float atkRotationSpeed;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     public Transform canvasTransform;
 
@@ -53,15 +53,15 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
 
         }
-
         if (nowShooting)
         {
             Vector3 direction = (playerTransform.position - transform.position).normalized;
             Quaternion rotation = Quaternion.LookRotation(direction); // 해당 방향을 바라보는 회전값을 구합니다.
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * atkRotationSpeed); // 부드럽게 회전하도록 Slerp 함수를 사용합니다.
         }
-        
-        if(detectFOV.visibleTargets.Count > 0)
+
+
+        if (detectFOV.visibleTargets.Count > 0)
         {
             //Debug.Log("적 발견");
             isFollowing = true;
@@ -76,21 +76,7 @@ public class Enemy : MonoBehaviour
             isFollowing = false;
             isBack = true;
         }
-        if (gun.atkFOV.visibleTargets.Count > 0) { // 사거리 내에 들어옴
-            animator.SetBool("isRun", false);
-            animator.SetBool("isRangedAttack", false);
-            
-            if(gun.atkFOV.visibleTargets.Count == 0)
-            {
-                agent.isStopped = false;
-            }
-            if(gun.state == "Active" && !nowShooting)
-            {
-                
-                StartCoroutine(volleyRangedAttack(playerTransform));
-            }
-            
-        }
+        
         if (isFollowing && !nowShooting)
         {
             animator.SetBool("isRun", true);
@@ -125,61 +111,7 @@ public class Enemy : MonoBehaviour
 
 
         }
-        if (gun.currentBulletAmount <= 0 && gun.state == "Active")
-        {
-            StartCoroutine(DelayedReload());
-        }
-    }
-
-    public IEnumerator volleyRangedAttack(Transform targetTransform)
-    {
-        agent.isStopped = true;
-        animator.SetBool("isRun", false);
-        animator.SetBool("isRangedAttack", true);
-
-        nowShooting = true;
-        //agent.isStopped = true;
-        while (gun.currentBulletAmount > 0)
-        {
-            if (hp <= 0)
-            {
-                break;
-            }
-            rangedAttack(targetTransform);
-            yield return new WaitForSeconds(gun.atkDelay);
-        }
-        nowShooting = false;
-        agent.isStopped = false;
-
-        animator.SetBool("isRun", false);
-        animator.SetBool("isRangedAttack", false);
-
-    }
-
-    public void rangedAttack(Transform targetTransform)
-    {
-        GameObject bullet = Instantiate(gun.bulletPrefab, gun.atkPOS.position, transform.rotation);
-        bullet.transform.LookAt(targetTransform.position);
-        Bullet bullet_sc = bullet.GetComponent<Bullet>();
-        bullet_sc.gunDamage = gun.damage;
-        bullet_sc.whoShoot = "Enemy";
-        gun.currentBulletAmount -= 1;
-
-        gun.audioSource.Play();
-        //Debug.Log(gun.currentBulletAmount);
-    }
-
-    IEnumerator DelayedReload()
-    {
-        gun.state = "Reload";
-        yield return new WaitForSeconds(gun.reloadDelay);
-        Reload();
-    }
-
-    public void Reload()
-    {
-        gun.currentBulletAmount = gun.maxBulletAmount;
-        gun.state = "Active";
+       
     }
 
 
