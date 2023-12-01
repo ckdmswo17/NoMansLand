@@ -625,8 +625,10 @@ MonoBehaviour:
   detectFOV: {fileID: 7374879754199697084}
   gun: {fileID: 4547567919998550087}
   isFollowing: 0
+  nowShooting: 0
   moveRotationSpeed: 10
   atkRotationSpeed: 10
+  agent: {fileID: 6936477783480416995}
   canvasTransform: {fileID: 4836330344856742121}
   deadBodyFactory: {fileID: 8806499389984233627, guid: f413e8c01e46f4bf58d1689b20839f32,
     type: 3}
@@ -896,6 +898,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1654773494497186780, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: user
+      value: 
+      objectReference: {fileID: 8806499389984233627}
+    - target: {fileID: 1654773494497186780, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: enemy_sc
+      value: 
+      objectReference: {fileID: 8806499389984233617}
+    - target: {fileID: 1654773494497186780, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 638389405799453842}
     - target: {fileID: 1782702501690864755, guid: 60770bdb4dc667c45bea53db0339dc05,
         type: 3}
       propertyPath: m_Name
@@ -1181,6 +1198,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6042744234059655333, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: m_Name
+      value: Scar
+      objectReference: {fileID: 0}
     - target: {fileID: 6138850820291896452, guid: 60770bdb4dc667c45bea53db0339dc05,
         type: 3}
       propertyPath: m_Layer
@@ -1375,6 +1397,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6356809616596093483}
   m_SourcePrefab: {fileID: 100100000, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+--- !u!82 &638389405799453842 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2393338417817175817, guid: 60770bdb4dc667c45bea53db0339dc05,
+    type: 3}
+  m_PrefabInstance: {fileID: 3020467654134944667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1650843507813880887 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4540229000190281644, guid: 60770bdb4dc667c45bea53db0339dc05,
