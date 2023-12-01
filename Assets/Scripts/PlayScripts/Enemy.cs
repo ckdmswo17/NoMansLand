@@ -50,8 +50,8 @@ public class Enemy : MonoBehaviour
         {
             GameObject deadBody = Instantiate(deadBodyFactory);
             deadBody.transform.position = transform.position;
-
             Destroy(gameObject);
+
         }
 
         if (nowShooting)
@@ -76,15 +76,17 @@ public class Enemy : MonoBehaviour
             isFollowing = false;
             isBack = true;
         }
-        if (gun.atkFOV.visibleTargets.Count > 0)
-        {
-            agent.isStopped = true;
+        if (gun.atkFOV.visibleTargets.Count > 0) { // 사거리 내에 들어옴
+            animator.SetBool("isRun", false);
+            animator.SetBool("isRangedAttack", false);
+            
             if(gun.atkFOV.visibleTargets.Count == 0)
             {
                 agent.isStopped = false;
             }
             if(gun.state == "Active" && !nowShooting)
             {
+                
                 StartCoroutine(volleyRangedAttack(playerTransform));
             }
             
@@ -131,6 +133,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator volleyRangedAttack(Transform targetTransform)
     {
+        agent.isStopped = true;
         animator.SetBool("isRun", false);
         animator.SetBool("isRangedAttack", true);
 
@@ -138,7 +141,10 @@ public class Enemy : MonoBehaviour
         //agent.isStopped = true;
         while (gun.currentBulletAmount > 0)
         {
-
+            if (hp <= 0)
+            {
+                break;
+            }
             rangedAttack(targetTransform);
             yield return new WaitForSeconds(gun.atkDelay);
         }
@@ -158,6 +164,8 @@ public class Enemy : MonoBehaviour
         bullet_sc.gunDamage = gun.damage;
         bullet_sc.whoShoot = "Enemy";
         gun.currentBulletAmount -= 1;
+
+        gun.audioSource.Play();
         //Debug.Log(gun.currentBulletAmount);
     }
 
@@ -174,7 +182,7 @@ public class Enemy : MonoBehaviour
         gun.state = "Active";
     }
 
-    
 
-    
+
+
 }

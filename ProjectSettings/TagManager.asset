@@ -19,8 +19,8 @@ TagManager:
   - Obstacle
   - Bullet
   - DeadBody
-  - 
-  - 
+  - Weapon
+  - Indicator
   - 
   - 
   - 

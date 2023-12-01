@@ -63,8 +63,6 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
     public void PointDown()
     {
         //Debug.Log("ui 누름 ");
-        player_sc.animator.SetBool("isRangedAttack", false);
-        player_sc.animator.SetBool("isRun", true);
 
         isTouch = true;
         atkAble = false;
@@ -76,7 +74,8 @@ public class JoyStick : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
 
     public void Drag(BaseEventData baseEventData)
     {
-        
+        player_sc.animator.SetBool("isRangedAttack", false);
+        player_sc.animator.SetBool("isRun", true);
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         Vector3 DragPosition = pointerEventData.position;
         joyVec = (DragPosition - stickFirstPosition).normalized;

@@ -12,6 +12,7 @@ public class WeaponGroup : MonoBehaviour
     float distance; // pos들 간의 간격
     float targetPos;
     bool isDrag;
+    public List<GameObject> weaponImages;
 
     // Start is called before the first frame update
     void Start()
