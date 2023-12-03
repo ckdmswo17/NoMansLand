@@ -41,12 +41,12 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // SourceItem 에서, ItemBase에 접근해, 받아옴.
+        // SourceItem ????, ItemBase?? ??????, ??????.
         itemSource = GameObject.Find("SourceItem");
        
         this.AllItemList = itemSource.GetComponent<ItemDataInitialize>().AllItemList;
 
-        //ItemDataBase파일에서, 다 불러서, AllList에 넣고, 
+        //ItemDataBase????????, ?? ??????, AllList?? ????, 
         // string[] line = ItemDatabase.text.Substring(0, ItemDatabase.text.Length - 1).Split('\n'); 
         /* for (int i = 0; i < line.Length; i++)
          {
@@ -93,8 +93,8 @@ public class ItemManager : MonoBehaviour
 
         // popUp.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
         StashPopUpInfo(CurItem, slotNum);
-        // popUp.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "이름 :" + CurItem.name;
-        //  popUp.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "가격 :" + CurItem.price;
+        // popUp.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "???? :" + CurItem.name;
+        //  popUp.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "???? :" + CurItem.price;
 
 
         //popUp.transform.GetChild(1).GetComponent<Image>().sprite = Stash_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
@@ -109,21 +109,21 @@ public class ItemManager : MonoBehaviour
         popUp_Bag.transform.GetChild(1).GetComponent<Image>().sprite = Bag_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
 
 
-        popUp_Bag.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "이름 :" + CurBagItem.name;
+        popUp_Bag.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Name :" + CurBagItem.name;
 
-        popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "가격 : " + CurBagItem.price;
+        popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Price : " + CurBagItem.price;
 
         switch (CurBagItem.type)
         {
             case "UsableItem":
 
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "공격력: " + CurBagItem.Damage.ToString(); break;
+                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurBagItem.Damage.ToString(); break;
             case "Equip":
 
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "방어력: " + CurBagItem.Hp_up.ToString(); break;
+                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Def: " + CurBagItem.Hp_up.ToString(); break;
             case "Food":
 
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "에너지: " + CurBagItem.Energy.ToString(); break;
+                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurBagItem.Energy.ToString(); break;
             case "Unusable":
 
                 popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = ""; break;
@@ -138,8 +138,8 @@ public class ItemManager : MonoBehaviour
         MyBagItemList.Add(CurItem);
         MyStashItemList.Remove(CurItem);
 
-        StashTabClick(curType); //stash 동기화
-        BagView(); // bag 동기화
+        StashTabClick(curType); //stash ??????
+        BagView(); // bag ??????
     }
     public void MoveToStash()
     {
@@ -147,29 +147,29 @@ public class ItemManager : MonoBehaviour
         MyBagItemList.Remove(CurBagItem);
 
 
-        StashTabClick(curType); //stash 동기화
-        BagView(); // bag 동기화
+        StashTabClick(curType); //stash ??????
+        BagView(); // bag ??????
     }
     public void StashPopUpInfo(ItemData _itemData, int slotNum)
     {
         popUp_Stash.transform.GetChild(1).GetComponent<Image>().sprite = Stash_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
 
 
-        popUp_Stash.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "이름 :" + _itemData.name;
+        popUp_Stash.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Name  :" + _itemData.name;
 
-        popUp_Stash.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "가격 : " + _itemData.price;
+        popUp_Stash.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Price  : " + _itemData.price;
 
         switch (_itemData.type)
         {
             case "UsableItem":
 
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "공격력: " + _itemData.Damage.ToString(); break;
+                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Damage: " + _itemData.Damage.ToString(); break;
             case "Equip":
 
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "방어력: " + _itemData.Hp_up.ToString(); break;
+                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Def: " + _itemData.Hp_up.ToString(); break;
             case "Food":
 
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "에너지: " + _itemData.Energy.ToString(); break;
+                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Energy: " + _itemData.Energy.ToString(); break;
             case "Unusable":
 
                 popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = ""; break;
@@ -208,20 +208,20 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Clicked SlotNum: " + CurItem.name);
 
         popUp_Shop.transform.GetChild(1).GetComponent<Image>().sprite = Shop_Slot[slotNum].transform.GetChild(1).GetComponent<Image>().sprite;
-        popUp_Shop.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "이름: " + CurShopItem.name;
-        popUp_Shop.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "가격: " + CurShopItem.price.ToString();
+        popUp_Shop.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name: " + CurShopItem.name;
+        popUp_Shop.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price: " + CurShopItem.price.ToString();
 
         switch (CurShopItem.type)
         {
             case "UsableItem":
 
-                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "공격력: " + CurShopItem.Damage.ToString(); break;
+                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurShopItem.Damage.ToString(); break;
             case "Equip":
 
-                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "방어력: " + CurShopItem.Hp_up.ToString(); break;
+                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Def: " + CurShopItem.Hp_up.ToString(); break;
             case "Food":
 
-                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "에너지: " + CurShopItem.Energy.ToString(); break;
+                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurShopItem.Energy.ToString(); break;
             case "Unusable":
 
                 popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = ""; break;
@@ -258,7 +258,7 @@ public class ItemManager : MonoBehaviour
             }
 
         }
-        // 탭 이미지
+        // ?? ??????
         int tabNum = 0;
         switch (tabName)
         {
@@ -298,7 +298,7 @@ public class ItemManager : MonoBehaviour
             }
 
         }
-        // 탭 반전이미지.
+        // ?? ??????????.
         int tabNum = 0;
         switch (tabName)
         {
@@ -316,15 +316,15 @@ public class ItemManager : MonoBehaviour
 
 
 
-    void Save() // allItemlist(시작시, 액셀파일(db)에서 읽아옴.)
+    void Save() // allItemlist(??????, ????????(db)???? ??????.)
     {
         string jdata = ConvertListToJson(AllItemList);
         print(jdata);
-        File.WriteAllText(Application.streamingAssetsPath + filePath, jdata); //여기서, allItem이 유저파일에 담기게 됨. 따로 save()를 만들어야함. allItem이 아닌, 
+        File.WriteAllText(Application.streamingAssetsPath + filePath, jdata); //??????, allItem?? ?????????? ?????? ??. ???? save()?? ??????????. allItem?? ????, 
     }
 
-    // 시작할때, initialSave(initialItemList) / 이후는, Save() {myItemList,} , AllItemList는 따로 오브젝트로 담아두고.. 이래서 id번호가 필요한듯.
-    void Load() // 유저파일로부터 읽어옴. 
+    // ????????, initialSave(initialItemList) / ??????, Save() {myItemList,} , AllItemList?? ???? ?????????? ????????.. ?????? id?????? ????????.
+    void Load() // ?????????????? ??????. 
     {
         string jdata = File.ReadAllText(Application.streamingAssetsPath + filePath);
         MyStashItemList = ConvertJsonToList<ItemData>(jdata);
@@ -341,14 +341,14 @@ public class ItemManager : MonoBehaviour
 
 
 
-    // List 변수를 JSON 포맷으로 직렬화하는 함수
+    // List ?????? JSON ???????? ?????????? ????
     public string ConvertListToJson<T>(List<T> myList)
     {
         string json = JsonConvert.SerializeObject(myList);
         return json;
     }
 
-    // JSON 포맷을 List 변수로 역직렬화하는 함수
+    // JSON ?????? List ?????? ???????????? ????
     public List<T> ConvertJsonToList<T>(string json)
     {
         List<T> myList = JsonConvert.DeserializeObject<List<T>>(json);

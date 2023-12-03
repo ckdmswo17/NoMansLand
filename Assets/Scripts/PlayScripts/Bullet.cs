@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     public string whoShoot;
 
     public GameObject bloodEffectFactory;
+    public GameObject fireEffectFactory;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,10 @@ public class Bullet : MonoBehaviour
         bulletRigidbody = GetComponent<Rigidbody>();
         bulletRigidbody.velocity = transform.forward * speed;
 
+        GameObject fireEffect = Instantiate(fireEffectFactory);
+        fireEffect.transform.position = transform.position;
+        Destroy(fireEffect, 0.35f);
+
         Destroy(gameObject, destroyTime);
     }
 
@@ -27,6 +32,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void FixedUpdate()
+    {
+        //bulletRigidbody.AddForce(transform.forward * speed);
     }
 
     private void OnTriggerEnter(Collider collision)

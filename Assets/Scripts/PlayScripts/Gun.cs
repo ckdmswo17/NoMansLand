@@ -31,6 +31,8 @@ public class Gun : MonoBehaviour
     public Transform atkPOS;
     public AudioSource audioSource;
 
+    public GameObject reloadText;
+
     void Awake()
     {
         
@@ -189,6 +191,7 @@ public class Gun : MonoBehaviour
         string firstState = state;
         state = "Reload";
         Debug.Log("장전 시작");
+        reloadText.SetActive(true);
         yield return new WaitForSeconds(reloadDelay);
         Reload(firstState);
 
@@ -197,7 +200,7 @@ public class Gun : MonoBehaviour
 
     public void Reload(string firstState)
     {
-
+        reloadText.SetActive(false);
         Debug.Log("장전 끝");
         currentBulletAmount = maxBulletAmount;
         if(firstState == "Active")
