@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7974171991768350184}
   - component: {fileID: 6265633613920854315}
-  m_Layer: 0
+  - component: {fileID: 6114234609356174174}
+  m_Layer: 6
   m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,17 +53,114 @@ MonoBehaviour:
   enemy_sc: {fileID: 0}
   state: Active
   damage: 400
-  atkDelay: 3
+  atkDelay: 5
   reloadDelay: 10
   maxBulletAmount: 3
   currentBulletAmount: 0
   maxDurability: 0
   currentDurability: 0
   atkFOV: {fileID: 4313471184095252681}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 1472437071575570918, guid: 53750aa7aea76440fb8f9b0a54bfa533,
+    type: 3}
   atkPOS: {fileID: 1521610760969780169}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6114234609356174174}
   reloadText: {fileID: 0}
+--- !u!82 &6114234609356174174
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236322488614824049}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6842201270061965298
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1521610760969780169}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: atkPOS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2826767597465568071}
   - component: {fileID: 4313471184095252681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: atkFOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,14 +236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a398c1f9b4847e40a3da4be89b56764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 0
-  viewAngle: 0
+  viewRadius: 18
+  viewAngle: 360
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   visibleTargets: []
 --- !u!1001 &2382901322114460183
 PrefabInstance:
@@ -155,9 +253,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7974171991768350184}
     m_Modifications:
+    - target: {fileID: 1108680531840334, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193049900690100, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244572097930848, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351957329504084, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553134824544692, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1799503499698754, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Sniper_Lite_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799503499698754, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4451754539142778, guid: 0eea16a93a3714247bedd5ce3e43849c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -9602,7 +9602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 10000
   moneyDisplay: {fileID: 228311978}
-  invnentroyManager: {fileID: 0}
+  invnentroyManager: {fileID: 373958646}
 --- !u!4 &797854214
 Transform:
   m_ObjectHideFlags: 0

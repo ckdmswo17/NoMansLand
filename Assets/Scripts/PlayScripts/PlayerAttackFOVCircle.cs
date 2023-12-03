@@ -13,7 +13,7 @@ public class PlayerAttackFOVCircle : MonoBehaviour
     private LineRenderer line;
     
 
-    private void Awake()
+    private void Start()
     {
         line = GetComponent<LineRenderer>();
         player_sc = GetComponent<Player>();

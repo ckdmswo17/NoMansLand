@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEditor;
 
 public class WeaponGroup : MonoBehaviour
 {
@@ -10,15 +11,30 @@ public class WeaponGroup : MonoBehaviour
     const int SIZE = 4;
     float[] pos = new float[SIZE]; // 각자 위치의 벨류값
     float distance; // pos들 간의 간격
-    float targetPos;
+    float targetPos = 1;
     bool isDrag;
-    public List<GameObject> weaponImages;
+    public List<GameObject> weaponSlots;
+
+    public InvenTest invenTest;
 
     // Start is called before the first frame update
     void Start()
     {
         distance = 1f / (SIZE - 1);
         for (int i = 0; i < SIZE; i++) pos[i] = distance * i;
+
+        for(int i = 0; i < invenTest.weaponNames.Capacity; i++)
+        {
+            string name = invenTest.weaponNames[i];
+            GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/ImageGO/" + name + ".prefab",typeof(GameObject)));
+            RectTransform rt = go.GetComponent<RectTransform>();
+            if((0 <= i) && (i < weaponSlots.Capacity))
+            {
+                go.transform.position = weaponSlots[i].transform.position;
+                rt.SetParent(weaponSlots[i].transform);
+            }
+            
+        }
     }
 
     // Update is called once per frame
@@ -26,7 +42,7 @@ public class WeaponGroup : MonoBehaviour
     {
         if (!isDrag)
         {
-            scrollbar.value = Mathf.Lerp(scrollbar.value, targetPos, 0.1f);
+            scrollbar.value = Mathf.Lerp(scrollbar.value,targetPos, 0.1f);
         }
         
     }

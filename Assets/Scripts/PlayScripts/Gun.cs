@@ -102,8 +102,11 @@ public class Gun : MonoBehaviour
             }
             if (currentBulletAmount <= 0 && state != "Reload")
             {
+                if(reloadText != null)
+                {
+                    StartCoroutine(DelayedReload());
+                }
                 
-                StartCoroutine(DelayedReload());
             }
         }
     }

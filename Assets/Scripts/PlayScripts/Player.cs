@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Player : MonoBehaviour
 {
@@ -26,14 +27,58 @@ public class Player : MonoBehaviour
     public GameObject audio;
 
     private UIManager uiManager;
-    public WeaponGroup weaponGroup;
+    public InvenTest invenTest;
+    public GameObject weaponsObject;
+    public GameObject reloadText;
+    //public WeaponGroup weaponGroup;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
         hp = maxHp;
         audioSource = GetComponent<AudioSource>();
+
+        for(int i = 0; i < invenTest.weaponNames.Capacity; i++)
+        {
+            string name = invenTest.weaponNames[i];
+            GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/" + name + ".prefab", typeof(GameObject)));
+            
+            guns.Add(go);
+            Gun gun_sc = go.GetComponent<Gun>();
+            if (i == 0)
+            {
+                gun = gun_sc;
+                gun.user = gameObject;
+                gun.player_sc = this;
+                gun.reloadText = reloadText;
+            } else
+            {
+                gun_sc.state = "Inactive";
+
+                Transform gunPrefab = go.transform.GetChild(0);
+                gunPrefab.GetComponent<MeshRenderer>().enabled = false;
+                for (int j = 0; j < gunPrefab.childCount; j++)
+                {
+                    gunPrefab.GetChild(j).GetComponent<MeshRenderer>().enabled = false;
+                }
+
+                gun_sc.user = gameObject;
+                gun_sc.player_sc = this;
+                gun_sc.reloadText = reloadText;
+
+            }
+            
+            if ((0 <= i) && (i < guns.Capacity))
+            {
+                
+                go.transform.SetParent(weaponsObject.transform);
+                go.transform.position = weaponsObject.transform.position;
+                go.transform.localScale = new Vector3(1, 1, 1);
+
+            }
+            
+        }
 
     }
 
@@ -54,6 +99,10 @@ public class Player : MonoBehaviour
 
     public void weaponChange(int index)
     {
+        if((0<=index && index<guns.Capacity) && guns[index] == null)
+        {
+            return;
+        }
         //Debug.Log("index : " + index+", cap : "+guns.Capacity);
         for(int i = 0; i < guns.Capacity; i++)
         {
