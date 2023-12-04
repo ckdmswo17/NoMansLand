@@ -5,6 +5,7 @@ using UnityEngine;
 public class InvenTest : MonoBehaviour
 {
     public List<string> weaponNames;
+    public List<string> backpackItemNames;
     // Start is called before the first frame update
     void Start()
     {
