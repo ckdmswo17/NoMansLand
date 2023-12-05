@@ -172,7 +172,7 @@ public class Gun : MonoBehaviour
 
                 audioSource.Play();
 
-                Debug.Log(currentBulletAmount);
+                //Debug.Log(currentBulletAmount);
             }
         } else
         {

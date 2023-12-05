@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8307046592886732977}
   - component: {fileID: 9019998074185081595}
   - component: {fileID: 7605226892235712608}
+  - component: {fileID: -9207714500938827861}
   m_Layer: 5
   m_Name: Sniper
   m_TagString: Untagged
@@ -75,3 +76,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-9207714500938827861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644371623713769906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5914428ddecd745d7935fc01008e12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Weapon
+  name: Sniper

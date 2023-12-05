@@ -33,26 +33,27 @@ public class Player : MonoBehaviour
     //public WeaponGroup weaponGroup;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
         hp = maxHp;
         audioSource = GetComponent<AudioSource>();
 
-        for(int i = 0; i < invenTest.weaponNames.Capacity; i++)
+        for (int i = 0; i < invenTest.backpackItemDatas.Count; i++)
         {
-            string name = invenTest.weaponNames[i];
+            string name = invenTest.backpackItemDatas[i].name;
             GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/" + name + ".prefab", typeof(GameObject)));
-            
+
             guns.Add(go);
             Gun gun_sc = go.GetComponent<Gun>();
-            if (i == 0)
+            if (i == 0) // 첫번째 인덱스의 무기를 자동 장
             {
                 gun = gun_sc;
                 gun.user = gameObject;
                 gun.player_sc = this;
                 gun.reloadText = reloadText;
-            } else
+            }
+            else
             {
                 gun_sc.state = "Inactive";
 
@@ -68,22 +69,24 @@ public class Player : MonoBehaviour
                 gun_sc.reloadText = reloadText;
 
             }
-            
-            if ((0 <= i) && (i < guns.Capacity))
+
+            if ((0 <= i) && (i < guns.Count))
             {
-                
+
                 go.transform.SetParent(weaponsObject.transform);
                 go.transform.position = weaponsObject.transform.position;
                 go.transform.localScale = new Vector3(1, 1, 1);
 
             }
-            
+
         }
 
     }
 
     void Update()
     {
+        
+
         //Quaternion q_hp = Quaternion.LookRotation(hpSliderTransform.position - cam.transform.position);
         //Vector3 hp_angle = Quaternion.RotateTowards(hpSliderTransform.rotation, q_hp, 300).eulerAngles;
         canvasTransform.rotation = Quaternion.Euler(55, 0, 0);
@@ -106,8 +109,8 @@ public class Player : MonoBehaviour
         //Debug.Log("index : " + index+", cap : "+guns.Capacity);
         for(int i = 0; i < guns.Capacity; i++)
         {
-            
-            if(guns[i] != null)
+            gameObject.GetComponent<LineRenderer>().enabled = true;
+            if (guns[i] != null)
             {
                 //Debug.Log(i);
                 Transform gunPrefab = guns[i].transform.GetChild(0);
@@ -135,4 +138,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void deleteGun(int index)
+    {
+        invenTest.backpackItemDatas.RemoveAt(index);
+
+        GameObject delete_gun_go = guns[index];
+        if(gun == delete_gun_go.GetComponent<Gun>())
+        {
+            gun = null;
+        }
+        guns.Remove(delete_gun_go);
+        Destroy(delete_gun_go);
+        gameObject.GetComponent<LineRenderer>().enabled = false;
+    }
 }

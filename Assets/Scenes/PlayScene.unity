@@ -837,6 +837,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &91559068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,6 +1163,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 14
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1470,6 +1494,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 29
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199537468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1611,6 +1647,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 24
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2051,6 +2099,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &235499690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2089,6 +2149,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235499687}
   m_CullTransparentMesh: 1
+--- !u!1 &235912819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1913131022393881026, guid: 3e68ac297152b49cab049095ee62d860,
+    type: 3}
+  m_PrefabInstance: {fileID: 6317716554156502632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &241899080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4230625018030128, guid: a55a5493fb3426d43a13a5b082e02558,
@@ -2273,6 +2339,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2593,6 +2671,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2935,6 +3025,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3362,6 +3464,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6317716554156502632}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &356834639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8494046366902733521, guid: 3e68ac297152b49cab049095ee62d860,
+    type: 3}
+  m_PrefabInstance: {fileID: 6317716554156502632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235912819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a9fa56c1d1348869f6907fea1d5a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &362978932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4713333779746000, guid: 0d64cf1bb9d6db5458fc4331eed07b15,
@@ -3891,6 +4005,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &411495567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4074,6 +4200,11 @@ PrefabInstance:
       propertyPath: audio
       value: 
       objectReference: {fileID: 289076822}
+    - target: {fileID: 5951280516367828478, guid: d5e15578f5be74acd951f7b8c65fb448,
+        type: 3}
+      propertyPath: maxHp
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 5951280516367828478, guid: d5e15578f5be74acd951f7b8c65fb448,
         type: 3}
       propertyPath: joystick
@@ -6795,6 +6926,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &731216487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8361,6 +8504,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 30
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &953090900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8871,6 +9026,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &964357290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9139,6 +9306,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 23
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &981372995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9276,6 +9455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985651626}
   - component: {fileID: 985651627}
+  - component: {fileID: 985651628}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9310,6 +9490,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b80bf85247cc471cac94b22dc4a453d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &985651628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985651625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5914428ddecd745d7935fc01008e12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 
+  name: 
 --- !u!4 &991498993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4588619470369974, guid: 2252526341f17ff40b51a7eac1c47b29,
@@ -10467,6 +10661,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1082036464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10683,6 +10889,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 25
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10995,6 +11213,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1136287952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11134,6 +11364,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 13
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1152491611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11190,6 +11432,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8806499389984233617, guid: 0664145d2aeae47f5987c29d2b9646a9,
+        type: 3}
+      propertyPath: enemyInventory
+      value: 
+      objectReference: {fileID: 1744370815}
     - target: {fileID: 8806499389984233617, guid: 0664145d2aeae47f5987c29d2b9646a9,
         type: 3}
       propertyPath: playerTransform
@@ -11258,7 +11505,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8806499389984233627, guid: 0664145d2aeae47f5987c29d2b9646a9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1744370815}
   m_SourcePrefab: {fileID: 100100000, guid: 0664145d2aeae47f5987c29d2b9646a9, type: 3}
 --- !u!1001 &1166334412
 PrefabInstance:
@@ -11438,6 +11689,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12291,6 +12554,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1274020774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4846357125400108, guid: 7d261aef3b84ccb4b91a005a110cdafe,
@@ -12388,6 +12663,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 16
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12527,6 +12814,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13912,14 +14211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedf79b08cb1e4e78bac7f75dc2935e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponNames:
-  - Scar
-  - Sniper
-  - Pistol
-  backpackItemNames:
-  - Scar
-  - Sniper
-  - Pistol
+  backpackItemDatas: []
 --- !u!1001 &1449485681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14464,6 +14756,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 22
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1504466653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14888,6 +15192,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 20
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1585877809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15227,6 +15543,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 27
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16057,6 +16385,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 15
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1673701123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16186,6 +16526,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 21
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16396,6 +16748,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5763059d78ddc449acd2e31e6f24d1, type: 3}
+--- !u!1 &1744370807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8806499389984233627, guid: 0664145d2aeae47f5987c29d2b9646a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1157661820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1744370815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744370807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03eccb3561a1447629f1dcfb525cf60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatas:
+  - {fileID: 2751007998064605136, guid: 10d63562804884c2a83b05249acc522f, type: 3}
 --- !u!4 &1755324822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4637973934252238, guid: 406a5d7803b0f19438c33158b169dd14,
@@ -16580,6 +16952,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16794,6 +17178,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17014,6 +17410,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 31
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17414,6 +17822,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 28
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18139,6 +18559,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 26
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -19251,6 +19683,9 @@ MonoBehaviour:
   - {fileID: 199537465}
   - {fileID: 953090897}
   - {fileID: 1812189207}
+  backpackItemPopupFactory: {fileID: 7373770311313413122, guid: 9fd72349595864bc488b4c646aa47445,
+    type: 3}
+  mainCanvas: {fileID: 235912819}
 --- !u!1 &2033239171
 GameObject:
   m_ObjectHideFlags: 0
@@ -19468,6 +19903,18 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2013073747}
+        m_TargetAssemblyTypeName: BackpackGroup, Assembly-CSharp
+        m_MethodName: itemPopupOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 17
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20021,6 +20468,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 140834477998452951, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 447751928552780873, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_Name
@@ -20268,6 +20720,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ed1074391f139544d941ae0870937dc0,
         type: 3}
+    - target: {fileID: 1390726322424202417, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1418623426373232120, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -20555,6 +21012,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4692804155825258233, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692804155825258233, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692804155825258233, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4694908608684480947, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -20694,8 +21166,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285846848322756158, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285846848322756158, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285846848322756158, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
       propertyPath: m_SizeDelta.y
       value: 710
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285846848322756158, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386480723745671741, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 640
       objectReference: {fileID: 0}
     - target: {fileID: 6543479075387334102, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
@@ -20722,11 +21214,133 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6573788166900062157, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573788166900062157, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573788166900062157, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356834639}
     - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 289076823}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 4244701592721145677, guid: 51c486f2b8e174d5abd4934ca4085f51,
+        type: 3}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: -5701772631102854357, guid: f413e8c01e46f4bf58d1689b20839f32,
+        type: 3}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: makeInteractionPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: interactionPopupOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: onBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: InteractionItemGroup, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: DeadEnemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 356834639}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693872985080531067, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808161160104818149, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 710
+      objectReference: {fileID: 0}
     - target: {fileID: 6813038479504115335, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -20797,6 +21411,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 289076823}
+    - target: {fileID: 7119335527854912156, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119335527854912156, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7191164911841675898, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_Name
@@ -21158,6 +21782,12 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8494046366902733521, guid: 3e68ac297152b49cab049095ee62d860,
+        type: 3}
+      propertyPath: interactionPopupFactory
+      value: 
+      objectReference: {fileID: 4178797639052363880, guid: cc8de5998144d44868bc13e73e237abc,
+        type: 3}
     - target: {fileID: 8504289508801784436, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_Type
@@ -21172,7 +21802,7 @@ PrefabInstance:
     - target: {fileID: 8569043858251353899, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_Size
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8569043858251353899, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
@@ -21187,12 +21817,12 @@ PrefabInstance:
     - target: {fileID: 8581759459947550134, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 8581759459947550134, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8595426221795894306, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}
@@ -21238,7 +21868,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 140834477998452951, guid: 3e68ac297152b49cab049095ee62d860, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7588013941273280533, guid: 3e68ac297152b49cab049095ee62d860,
         type: 3}

@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
 
     public Animator animator;
 
+    //public EnemyInventory enemyInventory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,9 +50,10 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
-            GameObject deadBody = Instantiate(deadBodyFactory);
-            deadBody.transform.position = transform.position;
-            Destroy(gameObject);
+
+                GameObject deadBody = Instantiate(deadBodyFactory);
+                deadBody.transform.position = transform.position;
+                Destroy(gameObject);
 
         }
         if (nowShooting)

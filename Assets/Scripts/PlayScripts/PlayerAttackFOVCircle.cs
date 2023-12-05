@@ -17,7 +17,14 @@ public class PlayerAttackFOVCircle : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         player_sc = GetComponent<Player>();
-        attackRange = player_sc.gun.atkFOV.viewRadius;
+        if (player_sc.gun.gameObject.name.Contains("Sniper"))
+        {
+            attackRange = player_sc.gun.atkFOV.viewRadius - 6;
+        } else
+        {
+            attackRange = player_sc.gun.atkFOV.viewRadius - 3;
+        }
+        
         DrawCircle();
     }
 
@@ -25,7 +32,16 @@ public class PlayerAttackFOVCircle : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         player_sc = GetComponent<Player>();
-        attackRange = player_sc.gun.atkFOV.viewRadius;
+        if (player_sc.gun.gameObject.name.Contains("Sniper"))
+        {
+            Debug.Log("Sniper");
+            attackRange = player_sc.gun.atkFOV.viewRadius - 6;
+        }
+        else
+        {
+            Debug.Log("else");
+            attackRange = player_sc.gun.atkFOV.viewRadius - 3;
+        }
         DrawCircle();
         return;
     }

@@ -22,29 +22,43 @@ public class WeaponGroup : MonoBehaviour
     {
         distance = 1f / (SIZE - 1);
         for (int i = 0; i < SIZE; i++) pos[i] = distance * i;
-
-        for(int i = 0; i < invenTest.weaponNames.Capacity; i++)
-        {
-            string name = invenTest.weaponNames[i];
-            GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/ImageGO/" + name + ".prefab",typeof(GameObject)));
-            RectTransform rt = go.GetComponent<RectTransform>();
-            if((0 <= i) && (i < weaponSlots.Capacity))
-            {
-                go.transform.position = weaponSlots[i].transform.position;
-                rt.SetParent(weaponSlots[i].transform);
-            }
-            
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (!isDrag)
         {
-            scrollbar.value = Mathf.Lerp(scrollbar.value,targetPos, 0.1f);
+            scrollbar.value = Mathf.Lerp(scrollbar.value, targetPos, 0.1f);
         }
+
+        for (int i = 0; i < weaponSlots.Count; i++)
+        {
+            if(weaponSlots[i].transform.childCount >= 1)
+            {
+                Destroy(weaponSlots[i].transform.GetChild(0).gameObject);
+            }   
+        }
+        int count = 0;
         
+        for (int i = 0; i < invenTest.backpackItemDatas.Count; i++)
+        {
+            if(invenTest.backpackItemDatas[i].name != null && invenTest.backpackItemDatas[i].type == "Weapon")
+            {
+                string name = invenTest.backpackItemDatas[i].name;
+                if ((0 <= count) && (count < weaponSlots.Count))
+                {
+                    GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/ImageGO/" + name + ".prefab", typeof(GameObject)));
+                    RectTransform rt = go.GetComponent<RectTransform>();
+                    go.transform.position = weaponSlots[count].transform.position;
+                    rt.SetParent(weaponSlots[count].transform);
+                }
+                count++;
+            }  
+
+        }
+
     }
 
     public void OnDrag()
@@ -62,5 +76,11 @@ public class WeaponGroup : MonoBehaviour
                 targetPos = pos[i];
             }
         }
+    }
+
+    public void weaponGroupUIUpdate()
+    {
+        
+        
     }
 }
