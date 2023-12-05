@@ -41,6 +41,7 @@ public class ItemManager : MonoBehaviour
     public Sprite[] ItemSprite;
     public ItemData CurItem,CurBagItem, CurShopItem, CurEquipItem;
     public double money = 10000;
+    public TextMeshProUGUI moneyDisplay;
     
 
 
@@ -63,6 +64,10 @@ public class ItemManager : MonoBehaviour
         MyEquipItemList = new ItemData[4];
     }
 
+    void Update()
+    {
+        moneyDisplay.text = money.ToString();
+    }
 
     public void AddStashSlotListener()
     {
