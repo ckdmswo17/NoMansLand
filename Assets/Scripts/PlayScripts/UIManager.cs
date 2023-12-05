@@ -5,24 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    private static UIManager instance = null;
-
+    public static UIManager instance;
     public GameObject interactionButton;
     public GameObject escapeButton;
+    public GameObject interactionPopupFactory;
 
     public bool isSuccess;
- 
+
+    //public bool isTriggering;
+    //public DeadEnemy curDeadEnemy;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else if (instance == null)
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
         interactionButton.SetActive(false);
         escapeButton.SetActive(false);
         DontDestroyOnLoad(gameObject);
@@ -59,5 +55,15 @@ public class UIManager : MonoBehaviour
     {
         isSuccess = true;
         SceneManager.LoadScene("ResultInterface");
+    }
+
+    public void makeInteractionPopup()
+    {
+        GameObject interactionPopup = Instantiate(interactionPopupFactory);
+        interactionPopup.SetActive(true);
+        RectTransform rt = interactionPopup.GetComponent<RectTransform>();
+        rt.SetParent(gameObject.transform);
+        rt.anchoredPosition = new Vector3(-540, 0, 0);
+        rt.SetSiblingIndex(6);
     }
 }

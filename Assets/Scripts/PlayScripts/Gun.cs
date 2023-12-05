@@ -102,8 +102,11 @@ public class Gun : MonoBehaviour
             }
             if (currentBulletAmount <= 0 && state != "Reload")
             {
+                if(reloadText != null)
+                {
+                    StartCoroutine(DelayedReload());
+                }
                 
-                StartCoroutine(DelayedReload());
             }
         }
     }
@@ -169,7 +172,7 @@ public class Gun : MonoBehaviour
 
                 audioSource.Play();
 
-                Debug.Log(currentBulletAmount);
+                //Debug.Log(currentBulletAmount);
             }
         } else
         {

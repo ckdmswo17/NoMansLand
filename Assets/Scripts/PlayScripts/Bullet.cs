@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
                 enemy.isFollowing = true; // 자신의 시야내에 없어도 맞으면 바로 추적상태로 전환
                 enemy.animator.SetTrigger("isAttacked");
                 
-                Debug.Log("Enemy HP : " + enemy.hp);
+                //Debug.Log("Enemy HP : " + enemy.hp);
             }
 
         } else
@@ -74,7 +74,7 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 player.hp -= gunDamage;
                 player.animator.SetTrigger("isAttacked");
-                Debug.Log("Player HP : " + player.hp);
+                //Debug.Log("Player HP : " + player.hp);
             }
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
