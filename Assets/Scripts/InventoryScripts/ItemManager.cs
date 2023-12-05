@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
@@ -28,7 +30,7 @@ public class ItemManager : MonoBehaviour
     public List<ItemData> MyBagItemList;
     public List<ItemData> ShopItemList;
     public List<ItemData> CurShopItemList;
-    public List<ItemData> MyEquipItemList;
+    public ItemData[] MyEquipItemList;
     private string filePath = "/MyItemText.txt";
     public string curType = "All";
     public string curShopType = "UsableItem";
@@ -39,36 +41,28 @@ public class ItemManager : MonoBehaviour
     public Sprite[] ItemSprite;
     public ItemData CurItem,CurBagItem, CurShopItem, CurEquipItem;
     public double money = 10000;
-    public TextMeshProUGUI moneyDisplay;
+    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        // SourceItem ????, ItemBase?? ??????, ??????.
+       
         itemSource = GameObject.Find("SourceItem");
        
         this.AllItemList = itemSource.GetComponent<ItemDataInitialize>().AllItemList;
 
-        //ItemDataBase????????, ?? ??????, AllList?? ????, 
-        // string[] line = ItemDatabase.text.Substring(0, ItemDatabase.text.Length - 1).Split('\n'); 
-        /* for (int i = 0; i < line.Length; i++)
-         {
-             string[] row = line[i].Split('\t');
-
-             AllItemList.Add(new Item(row[0], int.Parse(row[1]), row[2], int.Parse(row[3]), int.Parse(row[4]), int.Parse(row[5])));
-
-         }*/
+     
+        
         
 
         Save();
         Load();
-        //AddStashImage();
-        //AddStashSlotListener();
 
+        MyEquipItemList = new ItemData[4];
     }
-    private void Update()
-    {
-        moneyDisplay.transform.GetComponent<TextMeshProUGUI>().text = money.ToString();
-    }
+
 
     public void AddStashSlotListener()
     {
@@ -97,13 +91,7 @@ public class ItemManager : MonoBehaviour
         CurItem = CurStashItemList[slotNum];
         Debug.Log(CurItem.Name);
 
-        // popUp.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
         StashPopUpInfo(slotNum);
-        // popUp.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "???? :" + CurItem.name;
-        //  popUp.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "???? :" + CurItem.price;
-
-
-        //popUp.transform.GetChild(1).GetComponent<Image>().sprite = Stash_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
 
     }
     public void BagSlotClick(int slotNum)
@@ -148,10 +136,10 @@ public class ItemManager : MonoBehaviour
                 break;
             case "Food":
 
-                popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurBagItem.Energy.ToString(); break;
+                popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurBagItem.Energy.ToString(); break;
             case "Unusable":
 
-                popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = ""; break;
+                popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = ""; break;
 
         }
 
@@ -163,8 +151,8 @@ public class ItemManager : MonoBehaviour
         MyBagItemList.Add(CurItem);
         MyStashItemList.Remove(CurItem);
 
-        StashTabClick(curType); //stash ??????
-        BagView(); // bag ??????
+        StashTabClick(curType); 
+        BagView(); 
     }
     public void MoveToStash()
     {
@@ -172,19 +160,141 @@ public class ItemManager : MonoBehaviour
         MyBagItemList.Remove(CurBagItem);
 
 
-        StashTabClick(curType); //stash ??????
-        BagView(); // bag ??????
+        StashTabClick(curType); 
+        BagView(); 
     }
-    public void MoveStashToEquip()
+    public void MoveBagToEquip() //창고에서, 장착하기 버튼 누를시. 
     {
+        switch (CurBagItem.EquipType)
+        {
+            case "Head":
+                if (MyEquipItemList[0] != null)
+                {
+                    MyBagItemList.Add(MyEquipItemList[0]);
+                    MyEquipItemList[0] = CurBagItem;
+                }
+                else
+                {
+                    MyEquipItemList[0] = CurBagItem;
+
+                }
+                break;
+            case "Body":
+                if (MyEquipItemList[1] != null)
+                {
+                    MyBagItemList.Add(MyEquipItemList[1]);
+                    MyEquipItemList[1] = CurBagItem;
+                }
+                else
+                {
+                    MyEquipItemList[1] = CurBagItem;
+                }
+                break;
+            case "Hand":
+                if (MyEquipItemList[2] != null)
+                {
+                    MyBagItemList.Add(MyEquipItemList[2]);
+                    MyEquipItemList[2] = CurBagItem;
+                }
+                else
+                {
+                    MyEquipItemList[2] = CurBagItem;
+                }
+                break;
+            case "Foot":
+                if (MyEquipItemList[3] != null)
+                {
+                    MyBagItemList.Add(MyEquipItemList[3]);
+                    MyEquipItemList[3] = CurBagItem;
+                }
+                else
+                {
+                    MyEquipItemList[3] = CurBagItem;
+                }
+                break;
+
+        }
+        MyBagItemList.Remove(CurBagItem);
+        EquipView();
+        BagView();
 
     }
-
-    public void MoveEquipToStash()
+    public void MoveStashToEquip() //창고에서, 장착하기 버튼 누를시. 
     {
-        MyStashItemList.Add(CurEquipItem);
-        MyEquipItemList.Remove(CurEquipItem);
+            switch (CurItem.EquipType)
+            {
+                case "Head":
+                if (MyEquipItemList[0] != null)
+                {
+                   
+                    MyStashItemList.Add(MyEquipItemList[0]);
+                    MyEquipItemList[0] = CurItem;
+                    
+                    Debug.Log("투구 교체하기");
+                }
+                else {
+                    MyEquipItemList[0] = CurItem;
+                    Debug.Log("투구 바로장착하기 ");
+                }
+                break;
+                case "Body":
+                if (MyEquipItemList[1]!= null)
+                {
+                    MyStashItemList.Add(MyEquipItemList[1]);
+                    MyEquipItemList[1] = CurItem;
+                }
+                else
+                {
+                    MyEquipItemList[1] = CurItem;
+                }
+                break;
+            case "Hand":
+                if (MyEquipItemList[2] != null)
+                {
+                    MyStashItemList.Add(MyEquipItemList[2]);
+                    MyEquipItemList[2] = CurItem;
+                }
+                else
+                {
+                    MyEquipItemList[2] = CurItem;
+                }
+                break;
+            case "Foot":
+                if (MyEquipItemList[3] != null)
+                {
+                    MyStashItemList.Add(MyEquipItemList[3]);
+                    MyEquipItemList[3] = CurItem;
+                }
+                else
+                {
+                    MyEquipItemList[3] = CurItem;
+                }
+                break;
+
+        }
+        MyStashItemList.Remove(CurItem);
+
+        
+        StashTabClick(curType);
+        EquipView();
+
     }
+    public void EquipView() {
+        for (int i = 0; i < EquipItemImage.Length; i++)
+        {
+            if (MyEquipItemList[i] != null)
+            { 
+                EquipItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == MyEquipItemList[i].Name)]; 
+            }
+
+            else {
+                EquipItemImage[i].sprite = null;
+            }
+                
+        }
+    }
+
+
 
     public void StashPopUpInfo(int slotNum)
     {
@@ -231,12 +341,14 @@ public class ItemManager : MonoBehaviour
     }
 
 
-    public void BagView() 
+    public void BagView() //
     {
         for (int i = 0; i < Bag_Slot.Length; i++)
         {
             bool isExist = i < MyBagItemList.Count;
             Bag_Slot[i].SetActive(isExist);
+            MapBag_Slot[i].SetActive(isExist);
+
             Bag_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyBagItemList[i].Name : "";
 
             MapBag_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyBagItemList[i].Name : "";
@@ -286,44 +398,13 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public void EquipSlotClick(int slotNum)
+    public void EquipSlotClick(int slotNum) //해당 슬롯 클릭시. 
     {
-        if (MyEquipItemList[slotNum] == null)
-        {
-            popUp_Equip.gameObject.SetActive(false);
-        }
-        else
-        {
-            CurEquipItem = MyEquipItemList[slotNum];
-            Debug.Log("Clicked SlotNum: " + CurEquipItem.Name);
+        MyStashItemList.Add(MyEquipItemList[slotNum]);
+        MyEquipItemList[slotNum] = null;
+        EquipView();
+        StashTabClick(curType);
 
-            popUp_Equip.transform.GetChild(1).GetComponent<Image>().sprite = Shop_Slot[slotNum].transform.GetChild(1).GetComponent<Image>().sprite;
-            popUp_Equip.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name: " + CurEquipItem.Name;
-            popUp_Equip.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price: " + CurEquipItem.Price.ToString();
-
-            switch (CurShopItem.Type)
-            {
-                case "UsableItem":
-                    popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurEquipItem.Damage.ToString(); break;
-                case "Equip":
-                    switch (CurShopItem.EquipType)
-                    {
-                        case "Head":
-                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage Up: " + CurEquipItem.Damage_up.ToString(); break;
-                        case "Body":
-                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "HP Up: " + CurEquipItem.Hp_up.ToString(); break;
-                        case "Hand":
-                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "FireRate Up: " + CurEquipItem.FireRate_up.ToString() + "%"; break;
-                        case "Foot":
-                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "MoveSpeed Up: " + CurEquipItem.Movespeed_up.ToString(); break;
-                    }
-                    break;
-                case "Food":
-                    popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurEquipItem.Energy.ToString(); break;
-                case "Unusable":
-                    popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = ""; break;
-            }
-        }
 
     }
     public void BuyItem(int slotNum)
@@ -430,22 +511,7 @@ public class ItemManager : MonoBehaviour
 
     }
 
-    public void EquipTabClick(string tabName)
-    {
-        for (int i = 0; i < Equip_Slot.Length; i++)
-        {
-            bool isExist = i < MyEquipItemList.Count;
-            Equip_Slot[i].SetActive(isExist);
-            Equip_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyEquipItemList[i].Name : "";
-
-            if (isExist)
-            {
-                EquipItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == MyEquipItemList[i].Name)];
-            }
-
-        }
-    }
-
+ 
 
     void Save() // allItemlist(??????, ????????(db)???? ??????.)
     {

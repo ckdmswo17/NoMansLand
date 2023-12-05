@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public double money;
     public GameObject itemManager;
     public List<ItemData> MyBagItemList;
-    public List<ItemData> MyEquipItemList;
+    public ItemData[] MyEquipItemList;
 
     // Start is called before the first frame update
     void Start()
