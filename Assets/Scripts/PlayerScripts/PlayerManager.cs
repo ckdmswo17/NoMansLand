@@ -3,37 +3,42 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     static public PlayerManager instance;
     public double money;
-    public Transform moneyDisplay;
-    public GameObject invnentroyManager;
+    public GameObject itemManager;
+    public List<ItemData> MyBagItemList;
+    public List<ItemData> MyEquipItemList;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void SendToOtherScene() {
-
-        moneyDisplay.transform.GetComponent<TextMeshProUGUI>().text = money.ToString();
-        this.money = invnentroyManager.GetComponent<ItemManager>().money;
 
         if (instance != null)
         {
             Destroy(this.gameObject);
         }
-        else { 
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
             instance = this;
         }
-        
+    }
+
+    public void AcceptData() {
+        this.money = itemManager.GetComponent<ItemManager>().money;
+        this.MyBagItemList = itemManager.GetComponent<ItemManager>().MyBagItemList;
+        this.MyEquipItemList = itemManager.GetComponent<ItemManager>().MyEquipItemList;
+
+    }
+
+    public void SceneChange()
+    {
+        AcceptData();
+        Debug.Log(MyBagItemList.Count);
+        SceneManager.LoadScene("PlayScene");
     }
 }

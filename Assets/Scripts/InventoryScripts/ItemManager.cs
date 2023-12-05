@@ -21,23 +21,25 @@ public class ItemManager : MonoBehaviour
           }
       }*/
     public GameObject itemSource;
-    public GameObject popUp_Bag,popUp_Stash,popUp_Shop;
-    public GameObject player;
+    public GameObject popUp_Bag,popUp_Stash,popUp_Shop,popUp_Equip;
+    public GameObject player; 
     // public TextAsset ItemDatabase;
     public List<ItemData> AllItemList, MyStashItemList, CurStashItemList;
     public List<ItemData> MyBagItemList;
     public List<ItemData> ShopItemList;
     public List<ItemData> CurShopItemList;
+    public List<ItemData> MyEquipItemList;
     private string filePath = "/MyItemText.txt";
     public string curType = "All";
     public string curShopType = "UsableItem";
-    public GameObject[] Stash_Slot, Bag_Slot,Shop_Slot;
+    public GameObject[] Stash_Slot, Bag_Slot,Shop_Slot, Equip_Slot;
     public GameObject[] MapBag_Slot;
-    public Image[] StashTabImage, ShopTabImage, StashItemImage, BagItemImage,ShopItemImage,MapItemImage;
+    public Image[] StashTabImage, ShopTabImage, StashItemImage, BagItemImage,ShopItemImage,MapItemImage, EquipItemImage;
     public Sprite TabIdleSprite, TabSelectSprite;
     public Sprite[] ItemSprite;
-    public ItemData CurItem,CurBagItem, CurShopItem;
-    public double money;
+    public ItemData CurItem,CurBagItem, CurShopItem, CurEquipItem;
+    public double money = 10000;
+    public TextMeshProUGUI moneyDisplay;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,10 @@ public class ItemManager : MonoBehaviour
         //AddStashImage();
         //AddStashSlotListener();
 
+    }
+    private void Update()
+    {
+        moneyDisplay.transform.GetComponent<TextMeshProUGUI>().text = money.ToString();
     }
 
     public void AddStashSlotListener()
@@ -89,10 +95,10 @@ public class ItemManager : MonoBehaviour
     public void SlotClick(int slotNum)
     {
         CurItem = CurStashItemList[slotNum];
-        Debug.Log(CurItem.name);
+        Debug.Log(CurItem.Name);
 
         // popUp.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
-        StashPopUpInfo(CurItem, slotNum);
+        StashPopUpInfo(slotNum);
         // popUp.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "???? :" + CurItem.name;
         //  popUp.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "???? :" + CurItem.price;
 
@@ -103,30 +109,49 @@ public class ItemManager : MonoBehaviour
     public void BagSlotClick(int slotNum)
     {
         CurBagItem = MyBagItemList[slotNum];
-        Debug.Log(CurBagItem.name);
+        Debug.Log(CurBagItem.Name);
+
+        if (CurBagItem.Type != "Equip")
+        {
+            popUp_Bag.transform.GetChild(6).gameObject.SetActive(false);
+        }
+        else
+        {
+            popUp_Bag.transform.GetChild(6).gameObject.SetActive(true);
+        }
 
         // popUp.GetComponent<PopUpScirpt>().PopUpInfo(CurItem);
         popUp_Bag.transform.GetChild(1).GetComponent<Image>().sprite = Bag_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
 
 
-        popUp_Bag.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Name :" + CurBagItem.name;
+        popUp_Bag.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name :" + CurBagItem.Name;
 
-        popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Price : " + CurBagItem.price;
+        popUp_Bag.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price : " + CurBagItem.Price;
 
-        switch (CurBagItem.type)
+        switch (CurBagItem.Type)
         {
             case "UsableItem":
 
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurBagItem.Damage.ToString(); break;
+                popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurBagItem.Damage.ToString(); break;
             case "Equip":
-
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Def: " + CurBagItem.Hp_up.ToString(); break;
+                switch (CurBagItem.EquipType)
+                {
+                    case "Head":
+                        popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage Up: " + CurBagItem.Damage_up.ToString(); break;
+                    case "Body":
+                        popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "HP Up: " + CurBagItem.Hp_up.ToString(); break;
+                    case "Hand":
+                        popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "FireRate Up: " + CurBagItem.FireRate_up.ToString() + "%"; break;
+                    case "Foot":
+                        popUp_Bag.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "MoveSpeed Up: " + CurBagItem.Movespeed_up.ToString(); break;
+                }
+                break;
             case "Food":
 
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurBagItem.Energy.ToString(); break;
+                popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurBagItem.Energy.ToString(); break;
             case "Unusable":
 
-                popUp_Bag.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = ""; break;
+                popUp_Bag.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = ""; break;
 
         }
 
@@ -150,35 +175,61 @@ public class ItemManager : MonoBehaviour
         StashTabClick(curType); //stash ??????
         BagView(); // bag ??????
     }
-    public void StashPopUpInfo(ItemData _itemData, int slotNum)
+    public void MoveStashToEquip()
+    {
+
+    }
+
+    public void MoveEquipToStash()
+    {
+        MyStashItemList.Add(CurEquipItem);
+        MyEquipItemList.Remove(CurEquipItem);
+    }
+
+    public void StashPopUpInfo(int slotNum)
     {
         popUp_Stash.transform.GetChild(1).GetComponent<Image>().sprite = Stash_Slot[slotNum].transform.GetChild(0).GetComponent<Image>().sprite;
+        if(CurItem.Type != "Equip")
+        {
+            popUp_Stash.transform.GetChild(6).gameObject.SetActive(false);
+        }
+        else
+        {
+            popUp_Stash.transform.GetChild(6).gameObject.SetActive(true);
+        }
 
+        popUp_Stash.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name  :" + CurItem.Name;
 
-        popUp_Stash.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Name  :" + _itemData.name;
+        popUp_Stash.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price  : " + CurItem.Price;
 
-        popUp_Stash.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Price  : " + _itemData.price;
-
-        switch (_itemData.type)
+        switch (CurItem.Type)
         {
             case "UsableItem":
 
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Damage: " + _itemData.Damage.ToString(); break;
+                popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurItem.Damage.ToString(); break;
             case "Equip":
-
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Def: " + _itemData.Hp_up.ToString(); break;
+                switch (CurItem.EquipType)
+                {
+                    case "Head":
+                        popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage Up: " + CurItem.Damage_up.ToString(); break;
+                    case "Body":
+                        popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "HP Up: " + CurItem.Hp_up.ToString(); break;
+                    case "Hand":
+                        popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "FireRate Up: " + CurItem.FireRate_up.ToString() + "%"; break;
+                    case "Foot":
+                        popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "MoveSpeed Up: " + CurItem.Movespeed_up.ToString(); break;
+                }
+                break;
             case "Food":
 
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = "Energy: " + _itemData.Energy.ToString(); break;
+                popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurItem.Energy.ToString(); break;
             case "Unusable":
 
-                popUp_Stash.transform.GetChild(7).GetComponent<TextMeshProUGUI>().text = ""; break;
+                popUp_Stash.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = ""; break;
 
         }
-
-
-
     }
+
 
     public void BagView() 
     {
@@ -186,15 +237,15 @@ public class ItemManager : MonoBehaviour
         {
             bool isExist = i < MyBagItemList.Count;
             Bag_Slot[i].SetActive(isExist);
-            Bag_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyBagItemList[i].name : "";
+            Bag_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyBagItemList[i].Name : "";
 
-            MapBag_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyBagItemList[i].name : "";
+            MapBag_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyBagItemList[i].Name : "";
 
             if (isExist)
             {
-                BagItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.name == MyBagItemList[i].name)];
+                BagItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == MyBagItemList[i].Name)];
 
-                MapItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.name == MyBagItemList[i].name)];
+                MapItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == MyBagItemList[i].Name)];
             }
 
         }
@@ -205,56 +256,122 @@ public class ItemManager : MonoBehaviour
     public void ShopSlotClick(int slotNum)
     {
         CurShopItem = CurShopItemList[slotNum];
-        Debug.Log("Clicked SlotNum: " + CurItem.name);
+        Debug.Log("Clicked SlotNum: " + CurItem.Name);
 
         popUp_Shop.transform.GetChild(1).GetComponent<Image>().sprite = Shop_Slot[slotNum].transform.GetChild(1).GetComponent<Image>().sprite;
-        popUp_Shop.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name: " + CurShopItem.name;
-        popUp_Shop.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price: " + CurShopItem.price.ToString();
+        popUp_Shop.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name: " + CurShopItem.Name;
+        popUp_Shop.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price: " + CurShopItem.Price.ToString();
 
-        switch (CurShopItem.type)
+        switch (CurShopItem.Type)
         {
             case "UsableItem":
-
                 popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurShopItem.Damage.ToString(); break;
             case "Equip":
-
-                popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Def: " + CurShopItem.Hp_up.ToString(); break;
+                switch(CurShopItem.EquipType)
+                {
+                    case "Head":
+                        popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage Up: " + CurShopItem.Damage_up.ToString(); break;
+                    case "Body":
+                        popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "HP Up: " + CurShopItem.Hp_up.ToString(); break;
+                    case "Hand":
+                        popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "FireRate Up: " + CurShopItem.FireRate_up.ToString() + "%"; break;
+                    case "Foot":
+                        popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "MoveSpeed Up: " + CurShopItem.Movespeed_up.ToString(); break;
+                } break;
             case "Food":
-
                 popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurShopItem.Energy.ToString(); break;
             case "Unusable":
-
                 popUp_Shop.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = ""; break;
 
         }
     }
 
+    public void EquipSlotClick(int slotNum)
+    {
+        if (MyEquipItemList[slotNum] == null)
+        {
+            popUp_Equip.gameObject.SetActive(false);
+        }
+        else
+        {
+            CurEquipItem = MyEquipItemList[slotNum];
+            Debug.Log("Clicked SlotNum: " + CurEquipItem.Name);
+
+            popUp_Equip.transform.GetChild(1).GetComponent<Image>().sprite = Shop_Slot[slotNum].transform.GetChild(1).GetComponent<Image>().sprite;
+            popUp_Equip.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Name: " + CurEquipItem.Name;
+            popUp_Equip.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Price: " + CurEquipItem.Price.ToString();
+
+            switch (CurShopItem.Type)
+            {
+                case "UsableItem":
+                    popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage: " + CurEquipItem.Damage.ToString(); break;
+                case "Equip":
+                    switch (CurShopItem.EquipType)
+                    {
+                        case "Head":
+                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Damage Up: " + CurEquipItem.Damage_up.ToString(); break;
+                        case "Body":
+                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "HP Up: " + CurEquipItem.Hp_up.ToString(); break;
+                        case "Hand":
+                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "FireRate Up: " + CurEquipItem.FireRate_up.ToString() + "%"; break;
+                        case "Foot":
+                            popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "MoveSpeed Up: " + CurEquipItem.Movespeed_up.ToString(); break;
+                    }
+                    break;
+                case "Food":
+                    popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Energy: " + CurEquipItem.Energy.ToString(); break;
+                case "Unusable":
+                    popUp_Equip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = ""; break;
+            }
+        }
+
+    }
     public void BuyItem(int slotNum)
     {
+        if(money >= CurShopItem.Price)
+        {
+            MyStashItemList.Add(CurShopItem);
+            StashTabClick(curType);
+            money -= CurShopItem.Price;
+        }
+        else
+        {
+            Debug.Log("µ·¾ø¾î");
+        }
 
-
-        MyStashItemList.Add(CurShopItem);
+    }
+    public void SellStashItem()
+    {
+        MyStashItemList.Remove(CurItem);
+        money += CurItem.Price;
         StashTabClick(curType);
+        
+    }
+    public void SellBagItem()
+    {
+        MyBagItemList.Remove(CurBagItem);
+        money += CurBagItem.Price;
+        BagView();
     }
 
     public void ShopTabClick(string tabName)
     {
 
-        curType = tabName;
+        curShopType = tabName;
        
        
-        CurShopItemList = ShopItemList.FindAll(x => x.type == tabName);
+        CurShopItemList = ShopItemList.FindAll(x => x.Type == tabName);
         
 
         for (int i = 0; i < Shop_Slot.Length; i++)
         {
             bool isExist = i < CurShopItemList.Count;
             Shop_Slot[i].SetActive(isExist);
-            Shop_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? CurShopItemList[i].price.ToString() : "";
+            Shop_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? CurShopItemList[i].Price.ToString() : "";
 
             if (isExist)
             {
-                ShopItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.name == CurShopItemList[i].name)];
+                ShopItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == CurShopItemList[i].Name)];
             }
 
         }
@@ -282,7 +399,7 @@ public class ItemManager : MonoBehaviour
         }
         else
         {
-            CurStashItemList = MyStashItemList.FindAll(x => x.type == tabName);
+            CurStashItemList = MyStashItemList.FindAll(x => x.Type == tabName);
         }
 
 
@@ -290,15 +407,15 @@ public class ItemManager : MonoBehaviour
         {
             bool isExist = i < CurStashItemList.Count;
             Stash_Slot[i].SetActive(isExist);
-            Stash_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? CurStashItemList[i].name : "";
+            Stash_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? CurStashItemList[i].Name : "";
 
             if (isExist)
             {
-                StashItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.name == CurStashItemList[i].name)];
+                StashItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == CurStashItemList[i].Name)];
             }
 
         }
-        // ?? ??????????.
+       
         int tabNum = 0;
         switch (tabName)
         {
@@ -313,7 +430,21 @@ public class ItemManager : MonoBehaviour
 
     }
 
+    public void EquipTabClick(string tabName)
+    {
+        for (int i = 0; i < Equip_Slot.Length; i++)
+        {
+            bool isExist = i < MyEquipItemList.Count;
+            Equip_Slot[i].SetActive(isExist);
+            Equip_Slot[i].GetComponentInChildren<TextMeshProUGUI>().text = isExist ? MyEquipItemList[i].Name : "";
 
+            if (isExist)
+            {
+                EquipItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == MyEquipItemList[i].Name)];
+            }
+
+        }
+    }
 
 
     void Save() // allItemlist(??????, ????????(db)???? ??????.)

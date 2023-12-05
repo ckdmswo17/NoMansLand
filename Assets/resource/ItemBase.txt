@@ -1,6 +1,9 @@
-Equip	Helmet	3000	300	10	10				
-Food	Meat	500	350						
-UsableItem	Axe	650	0	200	50	5	100	10	0
-UsableItem	Bow	70	1	5	30	3	60	5	0
-UsableItem	Steroid	3000	2	0	0	0	0	0	50
-Unusable	Gem	5000							
+UsableItem	Scar	5000	50	0.2	10	20	60
+UsableItem	AWP	3000	400	3	10	3	9
+UsableItem	Glock-18	1000	100	1	5	8	24
+Equip	Helmet	1000	Head	10	0	0	0
+Equip	Vest	1000	Body	0	100	0	0
+Equip	Shoes	1000	Foot	0	0	2	0
+Equip	Glove	1000	Hand	0	0	0	10
+Food	Meat	500	10				
+Unusable	Gem	500					

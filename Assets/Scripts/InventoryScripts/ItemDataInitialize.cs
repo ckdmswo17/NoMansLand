@@ -21,13 +21,13 @@ public class ItemDataInitialize : MonoBehaviour
 
             if (type == "UsableItem")
             {
-                AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), int.Parse(row[3]), int.Parse(row[4]), int.Parse(row[5]), int.Parse(row[6]), float.Parse(row[7]), float.Parse(row[8]), float.Parse(row[9])));
+                AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), float.Parse(row[3]), float.Parse(row[4]), float.Parse(row[5]), float.Parse(row[6]), float.Parse(row[7])));
             }
             else if (type == "Equip")
             {
-                AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), float.Parse(row[3]), float.Parse(row[4]), float.Parse(row[5])));
+                AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), row[3], float.Parse(row[4]), float.Parse(row[5]), float.Parse(row[6]), float.Parse(row[7])));
             }
-            else if (type == "Food")//Food	Meat	500	350		
+            else if (type == "Food")	
             {
                 AllItemList.Add(new ItemData(row[0], row[1], int.Parse(row[2]), float.Parse(row[3])));
             }
@@ -51,22 +51,23 @@ public class ItemDataInitialize : MonoBehaviour
 
 public  class ItemData
 {
-    public string type, name;
-    public int price;
+    private string type, name;
+    private int price;
     //usable
-    private int perUsability;
-    private float accuarancy;
-    private float attack_speed;
-    private float value;
-    private int battle_type;
-    private int durability;
-    private int damage;
+    private float damage;
+    private float atkDelay;//공속
+    private float reloadDelay;//장전
+    private float bulletAmount;//탄창
+    private float durability;//내구도
     //equip
+    private string equipType;
+    private float damage_up;
     private float hp_up;
     private float movespeed_up;
     private float fireRate_up;
     //food
     private float energy;
+
 
     public ItemData() { }
     public ItemData(string type, string name, int price)
@@ -77,19 +78,19 @@ public  class ItemData
 
     }
 
-    public ItemData(string type, string name, int price, int battle_type, int durability, int damage, int perUsability, float accuarancy, float attack_speed, float value) : this(type, name, price)
+    public ItemData(string type, string name, int price, float damage, float atkDelay, float reloadDelay, float bulletAmount, float durability) : this(type, name, price)
     {
-        this.perUsability = perUsability;
-        this.accuarancy = accuarancy;
-        this.attack_speed = attack_speed;
-        this.value = value;
-        this.battle_type = battle_type;
-        this.durability = durability;
         this.damage = damage;
+        this.atkDelay = atkDelay;
+        this.reloadDelay = reloadDelay;
+        this.bulletAmount = bulletAmount;
+        this.durability = durability;
     }
 
-    public ItemData(string type, string name, int price, float hp_up, float movespeed_up, float fireRate_up) : this(type, name, price)
+    public ItemData(string type, string name, int price, string equipType, float damage_up, float hp_up, float movespeed_up, float fireRate_up) : this(type, name, price)
     {
+        this.equipType = equipType;
+        this.damage_up = damage_up;
         this.hp_up = hp_up;
         this.movespeed_up = movespeed_up;
         this.fireRate_up = fireRate_up;
@@ -99,79 +100,19 @@ public  class ItemData
     {
         this.energy = energy;
     }
-    public int Battle_type { get => battle_type; set => battle_type = value; }
-    public int Durability { get => durability; set => durability = value; }
-    public int Damage { get => damage; set => damage = value; }
-    public int PerUsability { get => perUsability; set => perUsability = value; }
-    public float Accuarancy { get => accuarancy; set => accuarancy = value; }
-    public float Attack_speed { get => attack_speed; set => attack_speed = value; }
-    public float Value { get => value; set => this.value = value; }
-    //
+    public string Type { get => type; set => type = value; }
+    public string Name { get => name; set => name = value; }
+    public int Price { get => price; set => price = value; }
+    public float Damage { get => damage; set => damage = value; }
+    public float AtkDelay { get => atkDelay; set => atkDelay = value; }
+    public float ReloadDelay { get => reloadDelay; set => reloadDelay = value; }
+    public float BulletAmount { get => bulletAmount; set => bulletAmount = value; }
+    public float Durability { get => durability; set => durability = value; }
+    public string EquipType { get => equipType; set => equipType = value; }
+    public float Damage_up { get => damage_up; set => damage_up = value; }
     public float Hp_up { get => hp_up; set => hp_up = value; }
     public float Movespeed_up { get => movespeed_up; set => movespeed_up = value; }
     public float FireRate_up { get => fireRate_up; set => fireRate_up = value; }
     public float Energy { get => energy; set => energy = value; }
-    //
 
-}
-public class UsableItem 
-{
-    private int perUsability;
-    private float accuarancy;
-    private float attack_speed;
-    private float value;
-    private int battle_type;
-    private int durability;
-    private int damage;
-
-    public UsableItem(string type, string name, int price, int battle_type, int durability, int damage, int perUsability, float accuarancy, float attack_speed, float value) 
-    {
-      
-        this.battle_type = battle_type;
-        this.durability = durability;
-        this.damage = damage;
-        this.perUsability = perUsability;
-        this.accuarancy = accuarancy;
-        this.attack_speed = attack_speed;
-        this.value = value;
-    }
-
-    public int Battle_type { get => battle_type; set => battle_type = value; }
-    public int Durability { get => durability; set => durability = value; }
-    public int Damage { get => damage; set => damage = value; }
-    public int PerUsability { get => perUsability; set => perUsability = value; }
-    public float Accuarancy { get => accuarancy; set => accuarancy = value; }
-    public float Attack_speed { get => attack_speed; set => attack_speed = value; }
-    public float Value { get => value; set => this.value = value; }
-}
-
-public class Equip 
-{
-    private float hp_up;
-    private float movespeed_up;
-    private float fireRate_up;
-
-    public Equip( float hp_up, float movespeed_up, float fireRate_up) 
-    {
- 
-        this.hp_up = hp_up;
-        this.movespeed_up = movespeed_up;
-        this.fireRate_up = fireRate_up;
-    }
-
-    public float Hp_up { get => hp_up; set => hp_up = value; }
-    public float Movespeed_up { get => movespeed_up; set => movespeed_up = value; }
-    public float FireRate_up { get => fireRate_up; set => fireRate_up = value; }
-}
-public class Food 
-{
-    private float energy;
-
-
-
-    public Food(float energy) { 
-        this.energy = energy;
-    }
-
-    public float Energy { get => energy; set => energy = value; }
 }
