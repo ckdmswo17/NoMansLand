@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     //public bool isTriggering;
     //public DeadEnemy curDeadEnemy;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame updatess
     void Awake()
     {
         instance = this;
