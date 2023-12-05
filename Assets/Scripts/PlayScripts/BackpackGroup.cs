@@ -7,7 +7,7 @@ using UnityEditor;
 public class BackpackGroup : MonoBehaviour
 {
 
-    public InvenTest invenTest;
+    public List<ItemData> myBackItemList;
     public List<GameObject> invenSlots;
     public GameObject backpackItemPopupFactory;
     public GameObject mainCanvas;
@@ -15,7 +15,7 @@ public class BackpackGroup : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        myBackItemList = GameObject.Find("PlayerManagement").GetComponent<PlayerManager>().MyBagItemList;
     }
 
     // Update is called once per frame
@@ -28,25 +28,25 @@ public class BackpackGroup : MonoBehaviour
                 Destroy(invenSlots[i].transform.GetChild(0).gameObject);
             }
         }
-        for (int i = 0; i < invenTest.backpackItemDatas.Count; i++)
+        for (int i = 0; i < myBackItemList.Count; i++)
         {
             
-            if (invenTest.backpackItemDatas[i].name != null)
+            if (myBackItemList[i].Name != null)
             {
-                string name = invenTest.backpackItemDatas[i].name;
+                string name = myBackItemList[i].Name;
                 
-                GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/ImageGO/" + name + ".prefab", typeof(GameObject)));
+                GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/ImageGO/" + name));
                 RectTransform rt = go.GetComponent<RectTransform>();
                 if ((0 <= i) && (i < invenSlots.Count))
                 {
                     rt.SetParent(invenSlots[i].transform);
-                    if(invenTest.backpackItemDatas[i].type == "Weapon")
+                    if (myBackItemList[i].Type == "UsableItem")
                     {
                         go.transform.position = invenSlots[i].transform.position - new Vector3(0, 20, 0);
                         rt.sizeDelta = new Vector2(120, 110); // 현재 아이콘 스프라이트는 웨펀 그룹용이라서 인벤토리 슬롯 사이즈에 맞게 조절 
                     } else
                     {
-
+                        go.transform.position = invenSlots[i].transform.position - new Vector3(0,20,0);
                     }
                     
                 }

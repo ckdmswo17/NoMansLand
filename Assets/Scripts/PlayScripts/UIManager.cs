@@ -12,18 +12,26 @@ public class UIManager : MonoBehaviour
 
     public bool isSuccess;
 
+    
+
     //public bool isTriggering;
     //public DeadEnemy curDeadEnemy;
 
     // Start is called before the first frame updatess
     void Awake()
     {
+        //playerManagement = GameObject.Find("PlayerManagement");
+
         instance = this;
         interactionButton.SetActive(false);
         escapeButton.SetActive(false);
         DontDestroyOnLoad(gameObject);
 
-
+        //for(int i=0;i< playerManagement.GetComponent<PlayerManager>().MyBagItemList.Count; i++)
+        //{
+        //    Debug.Log(playerManagement.GetComponent<PlayerManager>().MyBagItemList[i].Name);
+        //}
+        
     }
 
     // Update is called once per frame

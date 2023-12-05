@@ -15,13 +15,15 @@ public class WeaponGroup : MonoBehaviour
     bool isDrag;
     public List<GameObject> weaponSlots;
 
-    public InvenTest invenTest;
+    public List<ItemData> myBackItemList;
 
     // Start is called before the first frame update
     void Start()
     {
         distance = 1f / (SIZE - 1);
         for (int i = 0; i < SIZE; i++) pos[i] = distance * i;
+
+        myBackItemList = GameObject.Find("PlayerManagement").GetComponent<PlayerManager>().MyBagItemList;
     }
 
     // Update is called once per frame
@@ -42,14 +44,14 @@ public class WeaponGroup : MonoBehaviour
         }
         int count = 0;
         
-        for (int i = 0; i < invenTest.backpackItemDatas.Count; i++)
+        for (int i = 0; i < myBackItemList.Count; i++)
         {
-            if(invenTest.backpackItemDatas[i].name != null && invenTest.backpackItemDatas[i].type == "Weapon")
+            if(myBackItemList[i].Name != null && myBackItemList[i].Type == "UsableItem")
             {
-                string name = invenTest.backpackItemDatas[i].name;
+                string name = myBackItemList[i].Name;
                 if ((0 <= count) && (count < weaponSlots.Count))
                 {
-                    GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/ImageGO/" + name + ".prefab", typeof(GameObject)));
+                    GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/ImageGO/" + name));
                     RectTransform rt = go.GetComponent<RectTransform>();
                     go.transform.position = weaponSlots[count].transform.position;
                     rt.SetParent(weaponSlots[count].transform);
