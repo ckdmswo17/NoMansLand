@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Quest
 {
-    public enum QuestProgress {NOT_AVAILABLE, AVAILABLE, ACCEPTED, COMPLETE, DONE }
+    public enum QuestProgress 
+    {NOT_AVAILABLE, AVAILABLE, ACCEPTED, COMPLETE, DONE }
 
     public string title;
     public int id;

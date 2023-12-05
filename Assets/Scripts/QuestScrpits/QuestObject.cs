@@ -15,6 +15,7 @@ public class QuestObject : MonoBehaviour
 
     public Sprite questAvailableSprite;
     public Sprite questReceivableSprite;
+    
     void Start()
     {           
         setQuestMaker();
