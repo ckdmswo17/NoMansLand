@@ -102,10 +102,8 @@ public class Gun : MonoBehaviour
             }
             if (currentBulletAmount <= 0 && state != "Reload")
             {
-                if(reloadText != null)
-                {
-                    StartCoroutine(DelayedReload());
-                }
+                StartCoroutine(DelayedReload());
+
                 
             }
         }
@@ -194,7 +192,11 @@ public class Gun : MonoBehaviour
         string firstState = state;
         state = "Reload";
         Debug.Log("장전 시작");
-        reloadText.SetActive(true);
+        if(reloadText != null)
+        {
+            reloadText.SetActive(true);
+        }
+        
         yield return new WaitForSeconds(reloadDelay);
         Reload(firstState);
 
@@ -203,13 +205,17 @@ public class Gun : MonoBehaviour
 
     public void Reload(string firstState)
     {
-        reloadText.SetActive(false);
+        if (reloadText != null)
+        {
+            reloadText.SetActive(false);
+        }
+        
         Debug.Log("장전 끝");
         currentBulletAmount = maxBulletAmount;
         if(firstState == "Active")
         {
             state = "Active";
-        } else if(firstState == "Inactive")
+        } else
         {
             state = "Inactive";
         }

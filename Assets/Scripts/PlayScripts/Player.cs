@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public GameObject audio;
 
     private UIManager uiManager;
-    public InvenTest invenTest;
+    public List<ItemData> myBackItemList;
     public GameObject weaponsObject;
     public GameObject reloadText;
     //public WeaponGroup weaponGroup;
@@ -35,49 +35,56 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myBackItemList = GameObject.Find("PlayerManagement").GetComponent<PlayerManager>().MyBagItemList;
         uiManager = GameObject.Find("MainCanvas").GetComponent<UIManager>();
         hp = maxHp;
         audioSource = GetComponent<AudioSource>();
 
-        for (int i = 0; i < invenTest.backpackItemDatas.Count; i++)
+        int count = 0;
+        for (int i = 0; i < myBackItemList.Count; i++)
         {
-            string name = invenTest.backpackItemDatas[i].name;
-            GameObject go = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/PlayPrefabs/" + name + ".prefab", typeof(GameObject)));
-
-            guns.Add(go);
-            Gun gun_sc = go.GetComponent<Gun>();
-            if (i == 0) // 첫번째 인덱스의 무기를 자동 장
+            if(myBackItemList[i].Type == "UsableItem")
             {
-                gun = gun_sc;
-                gun.user = gameObject;
-                gun.player_sc = this;
-                gun.reloadText = reloadText;
-            }
-            else
-            {
-                gun_sc.state = "Inactive";
-
-                Transform gunPrefab = go.transform.GetChild(0);
-                gunPrefab.GetComponent<MeshRenderer>().enabled = false;
-                for (int j = 0; j < gunPrefab.childCount; j++)
+                string name = myBackItemList[i].Name;
+                GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/" + name));
+                guns.Add(go);
+                Gun gun_sc = go.GetComponent<Gun>();
+                if (count == 0) // 첫번째 인덱스의 무기를 자동 장착
                 {
-                    gunPrefab.GetChild(j).GetComponent<MeshRenderer>().enabled = false;
+                    gun = gun_sc;
+                    gun.user = gameObject;
+                    gun.player_sc = this;
+                    gun.reloadText = reloadText;
+                    gameObject.GetComponent<PlayerAttackFOVCircle>().awake2();
+                }
+                else
+                {
+                    gun_sc.state = "Inactive";
+
+                    Transform gunPrefab = go.transform.GetChild(0);
+                    gunPrefab.GetComponent<MeshRenderer>().enabled = false;
+                    for (int j = 0; j < gunPrefab.childCount; j++)
+                    {
+                        gunPrefab.GetChild(j).GetComponent<MeshRenderer>().enabled = false;
+                    }
+
+                    gun_sc.user = gameObject;
+                    gun_sc.player_sc = this;
+                    gun_sc.reloadText = reloadText;
+
                 }
 
-                gun_sc.user = gameObject;
-                gun_sc.player_sc = this;
-                gun_sc.reloadText = reloadText;
+                if ((0 <= i) && (i < guns.Count))
+                {
 
+                    go.transform.SetParent(weaponsObject.transform);
+                    go.transform.position = weaponsObject.transform.position;
+                    go.transform.localScale = new Vector3(1, 1, 1);
+
+                }
+                count++;
             }
-
-            if ((0 <= i) && (i < guns.Count))
-            {
-
-                go.transform.SetParent(weaponsObject.transform);
-                go.transform.position = weaponsObject.transform.position;
-                go.transform.localScale = new Vector3(1, 1, 1);
-
-            }
+            
 
         }
 
@@ -140,7 +147,7 @@ public class Player : MonoBehaviour
 
     public void deleteGun(int index)
     {
-        invenTest.backpackItemDatas.RemoveAt(index);
+        myBackItemList.RemoveAt(index);
 
         GameObject delete_gun_go = guns[index];
         if(gun == delete_gun_go.GetComponent<Gun>())

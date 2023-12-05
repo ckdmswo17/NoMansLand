@@ -16,13 +16,14 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         if (instance != null)
         {
             Destroy(this.gameObject);
         }
         else
         {
+            DontDestroyOnLoad(itemManager);
             DontDestroyOnLoad(this.gameObject);
             instance = this;
         }
