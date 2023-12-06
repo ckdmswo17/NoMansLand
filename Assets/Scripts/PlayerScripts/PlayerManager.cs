@@ -23,10 +23,11 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            DontDestroyOnLoad(itemManager);
+            //DontDestroyOnLoad(itemManager);
             DontDestroyOnLoad(this.gameObject);
             instance = this;
         }
+        //SceneManager.sceneLoaded += delegate { loadItemManager(); };
     }
 
     public void AcceptData() {
@@ -42,4 +43,14 @@ public class PlayerManager : MonoBehaviour
         Debug.Log(MyBagItemList.Count);
         SceneManager.LoadScene("PlayScene");
     }
+
+    //public void loadItemManager()
+    //{
+    //    itemManager = GameObject.Find("ItemManagement");
+    //}
+
+    //private void OnDestroy()
+    //{
+    //    SceneManager.sceneLoaded -= delegate { loadItemManager(); };
+    //}
 }
