@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
 
                 GameObject deadBody = Instantiate(deadBodyFactory);
                 deadBody.transform.position = transform.position;
+            deadBody.transform.localScale = transform.localScale;
                 Destroy(gameObject);
 
         }
