@@ -29,6 +29,6 @@ GO ./Excutable Dir, Select File For Your OS And Execute!
 정우재(Devpie1) : 메인화면 상점탭 제작, 로컬 데이터 관리, 프로젝트 문서 관리<br>
 차은재(ckdmswo17) : 플레이화면, 결과화면 제작, 프로젝트 버전 관리<br>
 주현재(NEET-HJ) : 메인화면 창고, 스테이지 선택 탭 제작<br>
-이병하 : 메인화면 퀘스트 탭 초안 제작
+이병하(kakao786) : 메인화면 퀘스트 탭 초안 제작
 </div>
 
