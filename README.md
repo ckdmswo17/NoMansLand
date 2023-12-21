@@ -1,6 +1,5 @@
 <div align=center>
 <h1>🏝️ NoMansLand</h1>
-  <br>
 Genre : 3D Top-Down Shooter Game (Single)
 <br>
   Version : Demo v1.0.0
@@ -12,6 +11,11 @@ GO ./Excutable Dir, Select File For Your OS And Execute!
 <h2>📄 Document</h2>
 [5.최종발표(정우재,차은재,주현재,이병하)V1.01.pdf](https://github.com/ckdmswo17/NoMansLand/files/13740284/5.V1.01.pdf)
 
+<h2>⚡️ Technology Stack</h2>
+
+![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)
+
+
 <h2>Gameplay Screenshot</h2>
 <img width="245" alt="스크린샷 2023-12-21 오후 7 15 50" src="https://github.com/ckdmswo17/NoMansLand/assets/71180737/29937361-7477-4017-970b-25a131261f61">
 <img width="246" alt="스크린샷 2023-12-21 오후 7 16 09" src="https://github.com/ckdmswo17/NoMansLand/assets/71180737/6e678d1a-4026-4dbb-8e06-0b6188e40160">
@@ -22,6 +26,9 @@ GO ./Excutable Dir, Select File For Your OS And Execute!
 <h2>🎥 Gameplay Video</h2>
 <a href="https://youtu.be/vvXvGnNOJ-o?feature=shared"><img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white"/></a>
 <h2>👬 Team Member</h2>
-
+정우재(Devpie1) : 메인화면 상점탭 제작, 로컬 데이터 관리, 프로젝트 문서 관리<br>
+차은재(ckdmswo17) : 플레이화면, 결과화면 제작, 프로젝트 버전 관리<br>
+주현재(NEET-HJ) : 메인화면 창고, 스테이지 선택 탭 제작<br>
+이병하 : 메인화면 퀘스트 탭 초안 제작
 </div>
 
