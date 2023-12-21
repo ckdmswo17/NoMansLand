@@ -9,7 +9,7 @@ Genre : 3D Top-Down Shooter Game (Single)
 GO ./Excutable Dir, Select File For Your OS And Execute!
 
 <h2>📄 Document</h2>
-[5.최종발표(정우재,차은재,주현재,이병하)V1.01.pdf](https://github.com/ckdmswo17/NoMansLand/files/13740284/5.V1.01.pdf)
+(https://github.com/ckdmswo17/NoMansLand/files/13740284/5.V1.01.pdf)
 
 <h2>⚡️ Technology Stack</h2>
 
